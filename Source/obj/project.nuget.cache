@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "3bWHANcrQug=",
+  "success": true,
+  "projectFilePath": "/home/avery/Projects/HuMilk Co/Source/HuMilkCo.csproj",
+  "expectedPackageFiles": [
+    "/home/avery/.nuget/packages/isexternalinit/1.0.3/isexternalinit.1.0.3.nupkg.sha512",
+    "/home/avery/.nuget/packages/krafs.rimworld.ref/1.6.4871/krafs.rimworld.ref.1.6.4871.nupkg.sha512",
+    "/home/avery/.nuget/packages/lib.harmony/2.4.2/lib.harmony.2.4.2.nupkg.sha512",
+    "/home/avery/.nuget/packages/microsoft.netframework.referenceassemblies/1.0.3/microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
+    "/home/avery/.nuget/packages/microsoft.netframework.referenceassemblies.net472/1.0.3/microsoft.netframework.referenceassemblies.net472.1.0.3.nupkg.sha512",
+    "/home/avery/.nuget/packages/rimworld.multiplayerapi/0.6.0/rimworld.multiplayerapi.0.6.0.nupkg.sha512"
+  ],
+  "logs": []
+}

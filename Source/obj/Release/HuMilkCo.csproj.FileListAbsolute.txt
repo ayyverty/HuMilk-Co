@@ -1,0 +1,7 @@
+/home/avery/Projects/HuMilk Co/Source/obj/Release/HuMilkCo.csproj.AssemblyReference.cache
+/home/avery/Projects/HuMilk Co/Source/obj/Release/HuMilkCo.GeneratedMSBuildEditorConfig.editorconfig
+/home/avery/Projects/HuMilk Co/Source/obj/Release/HuMilkCo.csproj.CoreCompileInputs.cache
+/home/avery/Projects/HuMilk Co/Assemblies/HuMilkCo.dll
+/home/avery/Projects/HuMilk Co/Assemblies/HuMilkCo.pdb
+/home/avery/Projects/HuMilk Co/Source/obj/Release/HuMilkCo.dll
+/home/avery/Projects/HuMilk Co/Source/obj/Release/HuMilkCo.pdb

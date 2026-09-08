@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <WorkGiverDef>
+    <defName>MilkingHumanlikes</defName>
+    <label>milk humanlikes</label>
+    <giverClass>HuMilkCo.WorkGiver_MilkHuman</giverClass>
+    <workType>Handling</workType>
+    <verb>milk</verb>
+    <gerund>milking</gerund>
+    <priorityInType>89</priorityInType>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+  </WorkGiverDef>
+
+</Defs>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/HediffDef[defName="Lactating"]/stages/li[1]/fertilityFactor</xpath>
+    <value>
+      <fertilityFactor>1</fertilityFactor>
+    </value>
+  </Operation>
+
+  <!-- Remove the 'harder to conceive' sentence from the Lactating description. -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/HediffDef[defName="Lactating"]/description</xpath>
+    <value>
+      <description>The condition of being able to breastfeed a baby. The breasts are actively producing and storing milk. The lactating state begins when a mother gives birth, and continues indefinitely as long as she breastfeeds a baby at least once every 10 days.</description>
+    </value>
+  </Operation>
+</Patch>

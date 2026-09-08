@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Aphrolactone: the drug itself. -->
+  <ThingDef ParentName="MakeableDrugBase">
+    <defName>Aphrolactone</defName>
+    <label>aphrolactone</label>
+    <description>A synthetic lactation hormone. When injected, it induces lactation in the user, increases milk production by 100%, and dramatically increases sex drive so the need for sex drains far faster than normal.\n\nIt is not known to cause overdose, but long-term use can lead to addiction.</description>
+    <descriptionHyperlinks>
+      <HediffDef>AphrolactoneLactation</HediffDef>
+      <HediffDef>AphrolactoneAddiction</HediffDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Drug/GoJuice</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <color>(230,120,190)</color>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>500</WorkToMake>
+      <MarketValue>40</MarketValue>
+      <Mass>0.1</Mass>
+    </statBases>
+    <techLevel>Industrial</techLevel>
+    <minRewardCount>10</minRewardCount>
+    <ingestible>
+      <joyKind>Chemical</joyKind>
+      <joy>0.30</joy>
+      <drugCategory>Hard</drugCategory>
+      <foodType>Processed, Fluid</foodType>
+      <baseIngestTicks>80</baseIngestTicks>
+      <ingestSound>Ingest_Inject</ingestSound>
+      <ingestHoldOffsetStanding>
+        <northDefault>
+          <offset>(0.18,0,0)</offset>
+        </northDefault>
+      </ingestHoldOffsetStanding>
+      <ingestCommandString>Inject {0}</ingestCommandString>
+      <ingestReportString>Injecting {0}.</ingestReportString>
+      <useEatingSpeedStat>false</useEatingSpeedStat>
+      <chairSearchRadius>0</chairSearchRadius>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>AphrolactoneLactation</hediffDef>
+          <severity>1</severity>
+          <toleranceChemical>Aphrolactone</toleranceChemical>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <recipeMaker>
+      <researchPrerequisite>AphrolactoneProduction</researchPrerequisite>
+      <recipeUsers>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <soundWorking>Recipe_Drug</soundWorking>
+      <displayPriority>1500</displayPriority>
+    </recipeMaker>
+    <costList>
+      <MilkHuman>1</MilkHuman>
+      <Neutroamine>1</Neutroamine>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>Aphrolactone</chemical>
+        <addictiveness>0.02</addictiveness>
+        <minToleranceToAddict>0.10</minToleranceToAddict>
+        <existingAddictionSeverityOffset>0.20</existingAddictionSeverityOffset>
+        <needLevelOffset>0.9</needLevelOffset>
+        <listOrder>210</listOrder>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- Effect: induces lactation, +100% milk production, faster sex need drain. -->
+  <HediffDef>
+    <defName>AphrolactoneLactation</defName>
+    <hediffClass>Hediff_High</hediffClass>
+    <label>aphrolactone lactation</label>
+    <labelNoun>an aphrolactone lactation</labelNoun>
+    <description>Lactation induced by the drug aphrolactone. Milk production is increased, and the user's sex drive is dramatically heightened.</description>
+    <defaultLabelColor>(0.9,0.4,0.6)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-2</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+      <li Class="HediffCompProperties_Chargeable">
+        <ticksToFullCharge>15000</ticksToFullCharge>
+        <initialCharge>0.125</initialCharge>
+        <fullChargeAmount>0.125</fullChargeAmount>
+        <minChargeToActivate>0.031</minChargeToActivate>
+        <labelInBrackets>milk fullness {CHARGEFACTOR_percentage}</labelInBrackets>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statFactors>
+          <RJW_MilkProduction>2.0</RJW_MilkProduction>
+        </statFactors>
+        <statOffsets>
+          <SexFrequency>1.0</SexFrequency>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Chemical. -->
+  <ChemicalDef>
+    <defName>Aphrolactone</defName>
+    <label>aphrolactone</label>
+    <addictionHediff>AphrolactoneAddiction</addictionHediff>
+    <geneOverdoseChanceFactorResist>0</geneOverdoseChanceFactorResist>
+    <geneOverdoseChanceFactorImmune>0</geneOverdoseChanceFactorImmune>
+  </ChemicalDef>
+
+  <!-- Chemical need. -->
+  <NeedDef ParentName="DrugAddictionNeedBase">
+    <defName>Chemical_Aphrolactone</defName>
+    <needClass>Need_Chemical</needClass>
+    <label>aphrolactone</label>
+    <description>Because of an aphrolactone addiction, this person needs to regularly consume the drug.</description>
+    <fallPerDay>0.333</fallPerDay>
+    <listPriority>44</listPriority>
+  </NeedDef>
+
+  <!-- Addiction. No withdrawal symptoms, as designed. -->
+  <HediffDef ParentName="AddictionBase">
+    <defName>AphrolactoneAddiction</defName>
+    <label>aphrolactone addiction</label>
+    <description>An addiction to the drug aphrolactone. The body has adapted to a constant supply of lactation hormones. Long-term use of aphrolactone causes no overdose, but an addict must regularly consume the drug or suffer the consequences.</description>
+    <hediffClass>Hediff_Addiction</hediffClass>
+    <chemicalNeed>Chemical_Aphrolactone</chemicalNeed>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.045</severityPerDay>
+        <showDaysToRecover>true</showDaysToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>satisfied</label>
+      </li>
+      <li>
+        <label>withdrawal</label>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Tolerance. -->
+  <HediffDef ParentName="DrugToleranceBase">
+    <defName>AphrolactoneTolerance</defName>
+    <label>aphrolactone tolerance</label>
+    <description>A built-up tolerance to aphrolactone. The more severe this tolerance is, the more drug it takes to maintain the effect.</description>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.015</severityPerDay>
+      </li>
+      <li Class="HediffCompProperties_DrugEffectFactor">
+        <chemical>Aphrolactone</chemical>
+      </li>
+    </comps>
+  </HediffDef>
+
+</Defs>

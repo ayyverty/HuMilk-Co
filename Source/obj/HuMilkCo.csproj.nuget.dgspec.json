@@ -1,0 +1,79 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/avery/Projects/HuMilk Co/Source/HuMilkCo.csproj": {}
+  },
+  "projects": {
+    "/home/avery/Projects/HuMilk Co/Source/HuMilkCo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/avery/Projects/HuMilk Co/Source/HuMilkCo.csproj",
+        "projectName": "HuMilkCo",
+        "projectPath": "/home/avery/Projects/HuMilk Co/Source/HuMilkCo.csproj",
+        "packagesPath": "/home/avery/.nuget/packages/",
+        "outputPath": "/home/avery/Projects/HuMilk Co/Source/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/avery/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "targetAlias": "net472",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "targetAlias": "net472",
+          "dependencies": {
+            "IsExternalInit": {
+              "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "target": "Package",
+              "version": "[*, )"
+            },
+            "Krafs.Rimworld.Ref": {
+              "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "target": "Package",
+              "version": "[1.6.*, )"
+            },
+            "Lib.Harmony": {
+              "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "target": "Package",
+              "version": "[2.*, )"
+            },
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.3, )",
+              "autoReferenced": true
+            },
+            "RimWorld.MultiplayerAPI": {
+              "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "target": "Package",
+              "version": "[*, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/avery/.dotnet/sdk/8.0.424/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

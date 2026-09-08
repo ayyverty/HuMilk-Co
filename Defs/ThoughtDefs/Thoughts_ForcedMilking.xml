@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Opinion penalty toward the pawn who forcefully milked them. -->
+  <ThoughtDef>
+    <defName>ForcedToBeMilked</defName>
+    <thoughtClass>Thought_MemorySocial</thoughtClass>
+    <durationDays>0.25</durationDays>
+    <stackLimit>1</stackLimit>
+    <stackLimitForSameOtherPawn>1</stackLimitForSameOtherPawn>
+    <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    <socialTargetDevelopmentalStageFilter>Child, Adult</socialTargetDevelopmentalStageFilter>
+    <stages>
+      <li>
+        <label>forcefully milked me</label>
+        <baseOpinionOffset>-20</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Mood thought for being forced to be milked. -->
+  <ThoughtDef>
+    <defName>ForcedToBeMilkedMood</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.25</durationDays>
+    <stackLimit>1</stackLimit>
+    <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>forced to be milked</label>
+        <description>I was milked like an animal against my will.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

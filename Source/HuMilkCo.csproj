@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <NoStdLib>false</NoStdLib>
+    <AssemblyName>HuMilkCo</AssemblyName>
+    <TargetFramework>net472</TargetFramework>
+    <OutputPath>..\Assemblies\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>HuMilkCo</RootNamespace>
+    <Deterministic>false</Deterministic>
+    <DebugType>portable</DebugType>
+    <Optimize>true</Optimize>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup>
+    <Reference><Private>False</Private></Reference>
+    <PackageReference><ExcludeAssets>runtime</ExcludeAssets></PackageReference>
+  </ItemDefinitionGroup>
+
+  <ItemGroup>
+    <!-- Reference the compiled RJW assembly (hard dependency, do not copy). -->
+    <Reference Include="RJW">
+      <HintPath>/home/avery/games/SteamLibrary/steamapps/common/RimWorld/Mods/rjw-master-fork/1.6/Assemblies/RJW.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <!-- Reference the RJW Quirks Fork assembly (dependency for the 'Milking' quirk). -->
+    <Reference Include="RJWQuirksFork">
+      <HintPath>/home/avery/games/SteamLibrary/steamapps/common/RimWorld/Mods/rjw-quirks-fork/1.6/Assemblies/RJWQuirksFork.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.*" />
+    <PackageReference Include="Lib.Harmony" Version="2.*" />
+    <PackageReference Include="RimWorld.MultiplayerAPI" Version="*" />
+    <PackageReference Include="IsExternalInit" Version="*" />
+  </ItemGroup>
+</Project>

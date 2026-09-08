@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <TraitDef>
+    <defName>Hucow</defName>
+    <label>hucow</label>
+    <description>[PAWN_nameDef] is a hucow - docile, bred for milk, and content to be milked like livestock. Willing to be milked without restraints and produces more milk.</description>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>hucow</label>
+        <description>[PAWN_nameDef] is a hucow - docile, bred for milk, and content to be milked like livestock. Willing to be milked without restraints and produces more milk.</description>
+        <statFactors>
+          <RJW_MilkProduction>1.5</RJW_MilkProduction>
+        </statFactors>
+      </li>
+    </degreeDatas>
+  </TraitDef>
+
+</Defs>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Mood thought for the aphrolactone-fuelled pleasure of being milked. -->
+  <ThoughtDef>
+    <defName>PleasureFromMilking</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>Pleasure from Milking</label>
+        <description>I hate that this feels this good. I hate that I'm already wondering when it'll happen again while my body shakes with pleasure and my face burns with shame. It's all happening at the same time and I'm dizzy.</description>
+        <baseMoodEffect>15</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>
