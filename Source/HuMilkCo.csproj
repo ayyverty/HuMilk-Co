@@ -28,6 +28,13 @@
       <HintPath>/home/avery/games/SteamLibrary/steamapps/common/RimWorld/Mods/rjw-master-fork/1.6/Assemblies/RJW.dll</HintPath>
       <Private>False</Private>
     </Reference>
+
+    <!-- Optional at runtime (soft dependency); compiled against for the Lactation
+         quirk's PartnerIsLactating condition. Do not copy (Private=False). -->
+    <Reference Include="RJWQuirksFork">
+      <HintPath>/home/avery/Projects/rjw-quirks-fork/1.6/Assemblies/RJWQuirksFork.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

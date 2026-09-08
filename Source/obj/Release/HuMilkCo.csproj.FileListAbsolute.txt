@@ -5,3 +5,4 @@
 /home/avery/Projects/HuMilk Co/Assemblies/HuMilkCo.pdb
 /home/avery/Projects/HuMilk Co/Source/obj/Release/HuMilkCo.dll
 /home/avery/Projects/HuMilk Co/Source/obj/Release/HuMilkCo.pdb
+/home/avery/Projects/HuMilk Co/Source/obj/Release/HuMilkCo.sourcelink.json
