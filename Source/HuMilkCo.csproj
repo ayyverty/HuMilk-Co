@@ -28,11 +28,6 @@
       <HintPath>/home/avery/games/SteamLibrary/steamapps/common/RimWorld/Mods/rjw-master-fork/1.6/Assemblies/RJW.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <!-- Reference the RJW Quirks Fork assembly (dependency for the 'Milking' quirk). -->
-    <Reference Include="RJWQuirksFork">
-      <HintPath>/home/avery/games/SteamLibrary/steamapps/common/RimWorld/Mods/rjw-quirks-fork/1.6/Assemblies/RJWQuirksFork.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>

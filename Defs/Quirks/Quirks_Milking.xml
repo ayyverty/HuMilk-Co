@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <RJWQuirksFork.QuirkDef>
+  <RJWQuirksFork.QuirkDef MayRequire="rjw.quirks.fork">
     <defName>Milking</defName>
     <label>Milking</label>
     <description>{pawn} is comfortable with being milked and enjoys the sensation. Willing to be milked without restraints.</description>

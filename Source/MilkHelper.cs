@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using RimWorld;
 using rjw;
-using RJWQuirksFork;
 using Verse;
 
 namespace HuMilkCo
@@ -87,7 +86,7 @@ namespace HuMilkCo
                 return true;
             }
 
-            if (MilkDefs.MilkingQuirk != null && pawn.HasQuirk(MilkDefs.MilkingQuirk))
+            if (QuirkBridge.HasQuirk(pawn, MilkDefs.MilkingQuirk))
             {
                 return true;
             }

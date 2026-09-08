@@ -5,3 +5,4 @@
 /home/avery/Projects/HuMilk Co/Source/obj/Debug/HuMilkCo.csproj.CoreCompileInputs.cache
 /home/avery/Projects/HuMilk Co/Source/obj/Debug/HuMilkCo.dll
 /home/avery/Projects/HuMilk Co/Source/obj/Debug/HuMilkCo.pdb
+/home/avery/Projects/HuMilk Co/Source/obj/Debug/HuMilkCo.sourcelink.json
