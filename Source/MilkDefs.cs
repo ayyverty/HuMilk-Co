@@ -53,6 +53,48 @@ namespace HuMilkCo
             }
         }
 
+        private static HediffDef aphrolactoneAddiction;
+        public static HediffDef AphrolactoneAddiction
+        {
+            get
+            {
+                if (aphrolactoneAddiction == null)
+                {
+                    aphrolactoneAddiction = DefDatabase<HediffDef>.GetNamedSilentFail("AphrolactoneAddiction");
+                }
+
+                return aphrolactoneAddiction;
+            }
+        }
+
+        private static NeedDef chemicalAphrolactone;
+        public static NeedDef ChemicalAphrolactone
+        {
+            get
+            {
+                if (chemicalAphrolactone == null)
+                {
+                    chemicalAphrolactone = DefDatabase<NeedDef>.GetNamedSilentFail("Chemical_Aphrolactone");
+                }
+
+                return chemicalAphrolactone;
+            }
+        }
+
+        private static MentalStateDef aphrolactoneRape;
+        public static MentalStateDef AphrolactoneRape
+        {
+            get
+            {
+                if (aphrolactoneRape == null)
+                {
+                    aphrolactoneRape = DefDatabase<MentalStateDef>.GetNamedSilentFail("AphrolactoneRape");
+                }
+
+                return aphrolactoneRape;
+            }
+        }
+
         private static StatDef milkProduction;
         public static StatDef MilkProduction
         {

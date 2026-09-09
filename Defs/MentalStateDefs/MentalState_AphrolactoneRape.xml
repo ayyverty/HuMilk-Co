@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--
+    Mental break for aphrolactone withdrawal: the pawn rapes a random non-hostile
+    humanlike pawn. Drives the break and lets the pawn recover once sexually
+    satisfied, exactly like RJW's RandomRape state but triggered by the addiction
+    hediff instead of the RJW sexual mental break system.
+  -->
+  <rjw.SexualMentalStateDef>
+    <defName>AphrolactoneRape</defName>
+    <stateClass>rjw.SexualMentalState</stateClass>
+    <label>rape the colony</label>
+    <category>Malicious</category>
+    <prisonersCanDo>true</prisonersCanDo>
+    <colonistsOnly>false</colonistsOnly>
+    <minTicksBeforeRecovery>30000</minTicksBeforeRecovery>
+    <recoveryMtbDays>0.8</recoveryMtbDays>
+    <maxTicksBeforeRecovery>80000</maxTicksBeforeRecovery>
+    <nameColor>(0.5, 0.9, 0.5)</nameColor>
+    <beginLetterLabel>withdrawal rape</beginLetterLabel>
+    <beginLetter>{0} is desperately craving aphrolactone. Cold with withdrawal, they turn to the nearest human for relief.</beginLetter>
+    <beginLetterDef>ThreatSmall</beginLetterDef>
+    <recoveryMessage>{0} is no longer raping randomly.</recoveryMessage>
+    <baseInspectLine>Mental state: Aphrolactone Rape</baseInspectLine>
+    <recoverFromSleep>true</recoverFromSleep>
+  </rjw.SexualMentalStateDef>
+
+</Defs>

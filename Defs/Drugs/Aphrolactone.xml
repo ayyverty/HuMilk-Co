@@ -56,7 +56,7 @@
       <displayPriority>1500</displayPriority>
     </recipeMaker>
     <costList>
-      <MilkHuman>1</MilkHuman>
+      <MilkHuman>5</MilkHuman>
       <Neutroamine>1</Neutroamine>
     </costList>
     <comps>
@@ -126,7 +126,8 @@
     <listPriority>44</listPriority>
   </NeedDef>
 
-  <!-- Addiction. No withdrawal symptoms, as designed. -->
+  <!-- Addiction. While addicted the pawn produces more milk; once the chemical need is
+       empty they break and rape a random non-hostile humanlike pawn, repeating daily. -->
   <HediffDef ParentName="AddictionBase">
     <defName>AphrolactoneAddiction</defName>
     <label>aphrolactone addiction</label>
@@ -138,13 +139,20 @@
         <severityPerDay>-0.045</severityPerDay>
         <showDaysToRecover>true</showDaysToRecover>
       </li>
+      <li Class="HuMilkCo.HediffCompProperties_AphrolactoneRapeBreak" />
     </comps>
     <stages>
       <li>
         <label>satisfied</label>
+        <statFactors>
+          <RJW_MilkProduction>1.25</RJW_MilkProduction>
+        </statFactors>
       </li>
       <li>
         <label>withdrawal</label>
+        <statFactors>
+          <RJW_MilkProduction>1.25</RJW_MilkProduction>
+        </statFactors>
       </li>
     </stages>
   </HediffDef>
