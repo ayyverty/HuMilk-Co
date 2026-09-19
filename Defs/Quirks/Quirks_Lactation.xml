@@ -7,7 +7,9 @@
     <description>{pawn} is turned on by lactation. {pawn_pronoun} gets aroused when {pawn_possessive} partner is lactating.</description>
     <iconPath>UI/Icons/Quirks/Lactation</iconPath>
     <ignoreIllegalLabelCharacterConfigError>true</ignoreIllegalLabelCharacterConfigError>
-    <satisfiedBy Class="HuMilkCo.Condition.PartnerIsLactating" />
+    <satisfiedBy Class="RJWQuirksFork.Condition.PartnerHasHediff">
+      <hediff>Lactating</hediff>
+    </satisfiedBy>
     <requires Class="RJWQuirksFork.Requirement.LogicalNot">
       <requirement Class="RJWQuirksFork.Requirement.IsAnimal" />
     </requires>
