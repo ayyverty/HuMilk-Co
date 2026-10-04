@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Genie -->
+  <ThingDef ParentName="HumanMilkBase">
+    <defName>MilkHumanGenie</defName>
+    <label>genie milk</label>
+    <description>Infused with the genie's intellect, this milk sharpens the mind but decreases pain tolerance.</description>
+    <graphicData>
+      <color>(0.70,0.85,1.00)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>18</MarketValue>
+    </statBases>
+    <ingestible>
+      <outcomeDoers>
+        <li Class="HuMilkCo.IngestionOutcomeDoer_MilkEffect" />
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- Highmate -->
+  <ThingDef ParentName="HumanMilkBase">
+    <defName>MilkHumanHighmate</defName>
+    <label>highmate milk</label>
+    <description>This milk lifts the drinker's spirits and makes them a more persuasive companion.</description>
+    <graphicData>
+      <color>(1.00,0.70,0.80)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>20</MarketValue>
+    </statBases>
+    <ingestible>
+      <outcomeDoers>
+        <li Class="HuMilkCo.IngestionOutcomeDoer_MilkEffect" />
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- Hussar -->
+  <ThingDef ParentName="HumanMilkBase">
+    <defName>MilkHumanHussar</defName>
+    <label>hussar milk</label>
+    <description>Saturated with combat-enhancing compounds, this milk grants a burst of speed and melee agility - at the cost of a ravenous appetite.</description>
+    <graphicData>
+      <color>(1.00,0.75,0.35)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>15</MarketValue>
+    </statBases>
+    <ingestible>
+      <outcomeDoers>
+        <li Class="HuMilkCo.IngestionOutcomeDoer_MilkEffect" />
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- Neanderthal -->
+  <ThingDef ParentName="HumanMilkBase">
+    <defName>MilkHumanNeanderthal</defName>
+    <label>neanderthal milk</label>
+    <description>This thick and hearty milk bolsters the immune system and slows bleeding.</description>
+    <graphicData>
+      <color>(0.72,0.58,0.42)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>8</MarketValue>
+    </statBases>
+    <ingestible>
+      <outcomeDoers>
+        <li Class="HuMilkCo.IngestionOutcomeDoer_MilkEffect" />
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- Pigskin -->
+  <ThingDef ParentName="HumanMilkBase">
+    <defName>MilkHumanPigskin</defName>
+    <label>pigskin milk</label>
+    <description>Kind of greasy and weird, this milk is cheap and filling. Handy during famines.</description>
+    <graphicData>
+      <color>(1.00,0.75,0.70)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>4</MarketValue>
+    </statBases>
+    <ingestible>
+      <outcomeDoers>
+        <li Class="HuMilkCo.IngestionOutcomeDoer_MilkEffect" />
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- Dirtmole -->
+  <ThingDef ParentName="HumanMilkBase">
+    <defName>MilkHumanDirtmole</defName>
+    <label>dirtmole milk</label>
+    <description>Rich with minerals, this milk improves the drinker's mining and drilling ability, but leaves them sluggish and sensitive to light.</description>
+    <graphicData>
+      <color>(0.65,0.65,0.65)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>12</MarketValue>
+    </statBases>
+    <ingestible>
+      <outcomeDoers>
+        <li Class="HuMilkCo.IngestionOutcomeDoer_MilkEffect" />
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- Impid -->
+  <ThingDef ParentName="HumanMilkBase">
+    <defName>MilkHumanImpid</defName>
+    <label>spicy milk</label>
+    <description>Hot! This milk increases movement speed and fire resistance, while warming the body.</description>
+    <graphicData>
+      <color>(1.00,0.45,0.25)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>10</MarketValue>
+    </statBases>
+    <ingestible>
+      <outcomeDoers>
+        <li Class="HuMilkCo.IngestionOutcomeDoer_MilkEffect" />
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- Waster -->
+  <ThingDef ParentName="HumanMilkBase">
+    <defName>MilkHumanWaster</defName>
+    <label>toxic milk</label>
+    <description>Milk only a waster would love. Bitter and tainted, this milk is toxic.</description>
+    <graphicData>
+      <color>(0.55,0.85,0.45)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>9</MarketValue>
+    </statBases>
+    <ingestible>
+      <outcomeDoers>
+        <li Class="HuMilkCo.IngestionOutcomeDoer_MilkEffect" />
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- Yttakin -->
+  <ThingDef ParentName="HumanMilkBase">
+    <defName>MilkHumanYttakin</defName>
+    <label>yttakin milk</label>
+    <description>This warm milk gives you a warm and fuzzy feeling, improving animal handling and cold tolerance.</description>
+    <graphicData>
+      <color>(0.92,0.88,0.78)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>7</MarketValue>
+    </statBases>
+    <ingestible>
+      <outcomeDoers>
+        <li Class="HuMilkCo.IngestionOutcomeDoer_MilkEffect" />
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- Sanguophage -->
+  <ThingDef ParentName="HumanMilkBase">
+    <defName>MilkHumanSanguophage</defName>
+    <label>blood milk</label>
+    <description>A deep crimson milk that restores hemogen. Not for human consumption.</description>
+    <graphicData>
+      <color>(0.75,0.15,0.20)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>25</MarketValue>
+    </statBases>
+    <ingestible>
+      <outcomeDoers>
+        <li Class="HuMilkCo.IngestionOutcomeDoer_MilkEffect" />
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+</Defs>

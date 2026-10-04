@@ -97,11 +97,6 @@ namespace HuMilkCo
                 return true;
             }
 
-            if (QuirkBridge.HasQuirk(pawn, MilkDefs.MilkingQuirk))
-            {
-                return true;
-            }
-
             if (MilkDefs.AphrolactoneLactation != null &&
                 pawn.health != null && pawn.health.hediffSet != null &&
                 pawn.health.hediffSet.HasHediff(MilkDefs.AphrolactoneLactation))
@@ -109,7 +104,9 @@ namespace HuMilkCo
                 return true;
             }
 
-            return false;
+            // Checked last: this reaches into the quirks assembly reflectively, so it is the
+            // most expensive check here and runs on every candidate scan.
+            return QuirkBridge.HasQuirk(pawn, MilkDefs.MilkingQuirk);
         }
 
         /// <summary>

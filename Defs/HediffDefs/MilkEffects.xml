@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Genie -->
+  <HediffDef>
+    <defName>MilkEffectGenie</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>genie milk effect</label>
+    <labelNoun>a genie milk effect</labelNoun>
+    <description>The drinker's mind is sharpened by genie-derived compounds: work and research speed quicken, but pain is felt more keenly while the effect lasts.</description>
+    <defaultLabelColor>(0.70,0.85,1.00)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>1</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-4</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statOffsets>
+          <WorkSpeedGlobal>0.15</WorkSpeedGlobal>
+          <ResearchSpeed>0.20</ResearchSpeed>
+        </statOffsets>
+        <statFactors>
+          <PainShockThreshold>0.85</PainShockThreshold>
+        </statFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Highmate -->
+  <HediffDef>
+    <defName>MilkEffectHighmate</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>highmate milk effect</label>
+    <labelNoun>a highmate milk effect</labelNoun>
+    <description>The drinker is suffused with highmate empathy: spirits rise, social impact grows, and the urge to start fights all but disappears while the effect lasts.</description>
+    <defaultLabelColor>(1.00,0.70,0.80)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>1</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-3</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <moodOffset>8</moodOffset>
+        <statOffsets>
+          <SocialImpact>0.30</SocialImpact>
+        </statOffsets>
+        <socialFightChanceFactor>0.8</socialFightChanceFactor>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Hussar -->
+  <HediffDef>
+    <defName>MilkEffectHussar</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>hussar milk effect</label>
+    <labelNoun>a hussar milk effect</labelNoun>
+    <description>Combat stimulants from hussar milk flood the drinker's system: they move and dodge faster, and burn through food at a ravenous rate while the effect lasts.</description>
+    <defaultLabelColor>(1.00,0.75,0.35)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>1</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-4.8</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statFactors>
+          <MoveSpeed>1.10</MoveSpeed>
+          <MeleeDodgeChance>1.15</MeleeDodgeChance>
+        </statFactors>
+        <hungerRateFactor>1.2</hungerRateFactor>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Neanderthal -->
+  <HediffDef>
+    <defName>MilkEffectNeanderthal</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>neanderthal milk effect</label>
+    <labelNoun>a neanderthal milk effect</labelNoun>
+    <description>The drinker's body is fortified by hardy neanderthal compounds: immunity builds faster and wounds bleed less while the effect lasts.</description>
+    <defaultLabelColor>(0.72,0.58,0.42)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>1</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-3</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statOffsets>
+          <ImmunityGainSpeed>0.25</ImmunityGainSpeed>
+        </statOffsets>
+        <totalBleedFactor>0.85</totalBleedFactor>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Pigskin -->
+  <HediffDef>
+    <defName>MilkEffectPigskin</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>pigskin milk effect</label>
+    <labelNoun>a pigskin milk effect</labelNoun>
+    <description>Plain pigskin milk is metabolized with surprising efficiency, so the drinker needs less food to stay fed - though it leaves a slightly sour feeling while the effect lasts.</description>
+    <defaultLabelColor>(1.00,0.75,0.70)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>1</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-4</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <moodOffset>-2</moodOffset>
+        <hungerRateFactor>0.9</hungerRateFactor>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Dirtmole -->
+  <HediffDef>
+    <defName>MilkEffectDirtmole</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>dirtmole milk effect</label>
+    <labelNoun>a dirtmole milk effect</labelNoun>
+    <description>The drinker's hands are steadied for tunnel work: mining and deep drilling speed up. Out in bright, open daylight, however, they become sluggish while the effect lasts.</description>
+    <defaultLabelColor>(0.65,0.65,0.65)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>1</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-3</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statOffsets>
+          <MiningSpeed>0.25</MiningSpeed>
+          <DeepDrillingSpeed>0.20</DeepDrillingSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Impid -->
+  <HediffDef>
+    <defName>MilkEffectImpid</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>spicy milk effect</label>
+    <labelNoun>a spicy milk effect</labelNoun>
+    <description>Fiery impid milk stokes the drinker's internal furnace: they move quicker, shrug off flame, and their body runs noticeably hotter while the effect lasts.</description>
+    <defaultLabelColor>(1.00,0.45,0.25)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>1</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-4</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statFactors>
+          <MoveSpeed>1.10</MoveSpeed>
+          <Flammability>0.85</Flammability>
+        </statFactors>
+        <statOffsets>
+          <ComfyTemperatureMax>-5</ComfyTemperatureMax>
+        </statOffsets>
+        <damageFactors>
+          <li>
+            <damageDef>Flame</damageDef>
+            <factor>0.85</factor>
+          </li>
+        </damageFactors>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Waster: stage 0 for non-wasters, stage 1 for wasters. -->
+  <HediffDef MayRequire="ludeon.rimworld.biotech">
+    <defName>MilkEffectWaster</defName>
+    <hediffClass>HuMilkCo.Hediff_MilkEffectXenotype</hediffClass>
+    <label>toxic milk effect</label>
+    <labelNoun>a toxic milk effect</labelNoun>
+    <description>For a waster, toxic milk is a comfort draught: it flushes toxins and lifts the spirits. For anyone else it is a bitter, tainted brew that sours the mood and leaves a trace of poison behind while the effect lasts.</description>
+    <defaultLabelColor>(0.55,0.85,0.45)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>1</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-4</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+      <li Class="HuMilkCo.HediffCompProperties_MilkEffectXenotype">
+        <xenotype>Waster</xenotype>
+        <toxicBuildupOnNonXenotype>0.06</toxicBuildupOnNonXenotype>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <moodOffset>-4</moodOffset>
+        <statFactors>
+          <MoveSpeed>1.10</MoveSpeed>
+        </statFactors>
+      </li>
+      <li>
+        <moodOffset>4</moodOffset>
+        <statOffsets>
+          <ImmunityGainSpeed>0.15</ImmunityGainSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Yttakin -->
+  <HediffDef>
+    <defName>MilkEffectYttakin</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>yttakin milk effect</label>
+    <labelNoun>a yttakin milk effect</labelNoun>
+    <description>Warm, fur-scented yttakin milk steadies the drinker's hand with animals and grants an animal's own tolerance for the cold while the effect lasts.</description>
+    <defaultLabelColor>(0.92,0.88,0.78)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>1</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-3</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <statFactors>
+          <TameAnimalChance>1.20</TameAnimalChance>
+        </statFactors>
+        <statOffsets>
+          <AnimalGatherYield>0.15</AnimalGatherYield>
+          <ComfyTemperatureMin>-8</ComfyTemperatureMin>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <!-- Sanguophage: stage 0 for non-sanguophages, stage 1 for sanguophages. -->
+  <HediffDef MayRequire="ludeon.rimworld.biotech">
+    <defName>MilkEffectSanguophage</defName>
+    <hediffClass>HuMilkCo.Hediff_MilkEffectXenotype</hediffClass>
+    <label>blood milk effect</label>
+    <labelNoun>a blood milk effect</labelNoun>
+    <description>For a sanguophage, blood milk is a rare comfort: it restores hemogen on the spot and soothes the drinker. For a normal human it is a grotesque, unsettling tonic that sours the mood while the effect lasts.</description>
+    <defaultLabelColor>(0.75,0.15,0.20)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <maxSeverity>1</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-4</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+      <li Class="HuMilkCo.HediffCompProperties_MilkEffectXenotype">
+        <xenotype>Sanguophage</xenotype>
+        <hemogenRestoreOnXenotype>0.15</hemogenRestoreOnXenotype>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <moodOffset>-10</moodOffset>
+      </li>
+      <li>
+        <moodOffset>5</moodOffset>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

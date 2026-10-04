@@ -9,6 +9,10 @@
 	</supportedVersions>
 	<modDependencies>
 		<li>
+			<packageId>ludeon.rimworld.biotech</packageId>
+			<displayName>Biotech</displayName>
+		</li>
+		<li>
 			<packageId>rim.job.world</packageId>
 			<displayName>RimJobWorld</displayName>
 			<downloadUrl>https://gitgud.io/Ed86/rjw</downloadUrl>

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <ThingDef ParentName="OrganicProductBase">
-    <defName>MilkHuman</defName>
+  <!-- Shared base for all HuMilk Co milk. Per-milk defs inherit this and add their
+       own market value, tint, and (for xenotype milks) an effect ingestion doer. -->
+  <ThingDef Abstract="True" Name="HumanMilkBase" ParentName="OrganicProductBase">
     <label>human milk</label>
     <description>Milk expressed from a lactating human or human-like pawn. A natural commodity in colonies that keep milkable pawns.</description>
     <graphicData>
@@ -10,7 +11,6 @@
     </graphicData>
     <socialPropernessMatters>true</socialPropernessMatters>
     <statBases>
-      <MarketValue>6</MarketValue>
       <Mass>0.045</Mass>
       <MaxHitPoints>60</MaxHitPoints>
       <Flammability>0.2</Flammability>
@@ -32,6 +32,17 @@
       <li>AnimalProductRaw</li>
     </thingCategories>
     <allowedArchonexusCount>80</allowedArchonexusCount>
+  </ThingDef>
+
+  <!-- Default milk produced by baseliners and any pawn without a mapped xenotype.
+       No special effect. -->
+  <ThingDef ParentName="HumanMilkBase">
+    <defName>MilkHuman</defName>
+    <label>human milk</label>
+    <description>Milk expressed from a lactating human or human-like pawn. A natural commodity in colonies that keep milkable pawns.</description>
+    <statBases>
+      <MarketValue>6</MarketValue>
+    </statBases>
   </ThingDef>
 
 </Defs>

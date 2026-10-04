@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
@@ -201,6 +202,115 @@ namespace HuMilkCo
 
                 return milkingQuirk;
             }
+        }
+
+        private static HediffDef dirtmoleEffect;
+        public static HediffDef DirtmoleEffect
+        {
+            get
+            {
+                if (dirtmoleEffect == null)
+                {
+                    dirtmoleEffect = DefDatabase<HediffDef>.GetNamedSilentFail("MilkEffectDirtmole");
+                }
+
+                return dirtmoleEffect;
+            }
+        }
+
+        private static Dictionary<XenotypeDef, MilkXenotypeDef> xenotypeToMilk;
+        private static Dictionary<ThingDef, HediffDef> milkToEffect;
+        private static bool registryResolved;
+
+        private static void EnsureRegistry()
+        {
+            if (registryResolved)
+            {
+                return;
+            }
+
+            registryResolved = true;
+            xenotypeToMilk = new Dictionary<XenotypeDef, MilkXenotypeDef>();
+            milkToEffect = new Dictionary<ThingDef, HediffDef>();
+
+            List<MilkXenotypeDef> links = DefDatabase<MilkXenotypeDef>.AllDefsListForReading;
+            for (int i = 0; i < links.Count; i++)
+            {
+                MilkXenotypeDef link = links[i];
+                if (link == null)
+                {
+                    continue;
+                }
+
+                if (link.xenotype != null && link.milk != null && !xenotypeToMilk.ContainsKey(link.xenotype))
+                {
+                    xenotypeToMilk.Add(link.xenotype, link);
+                }
+
+                if (link.milk != null && link.effect != null && !milkToEffect.ContainsKey(link.milk))
+                {
+                    milkToEffect.Add(link.milk, link.effect);
+                }
+            }
+        }
+
+        /// <summary>
+        /// The milk def a pawn produces, determined by its xenotype. Falls back to the
+        /// default <c>MilkHuman</c> for baseliners and unmapped xenotypes.
+        /// </summary>
+        public static ThingDef GetMilkForPawn(Pawn pawn)
+        {
+            if (pawn == null || pawn.genes == null || pawn.genes.Xenotype == null)
+            {
+                return MilkHuman;
+            }
+
+            EnsureRegistry();
+            if (xenotypeToMilk.TryGetValue(pawn.genes.Xenotype, out MilkXenotypeDef link) && link.milk != null)
+            {
+                return link.milk;
+            }
+
+            return MilkHuman;
+        }
+
+        /// <summary>
+        /// The timed effect hediff granted by drinking the given milk def, or null if
+        /// the milk has no mapped effect (e.g. plain human milk).
+        /// </summary>
+        public static HediffDef GetMilkEffect(ThingDef milk)
+        {
+            if (milk == null)
+            {
+                return null;
+            }
+
+            EnsureRegistry();
+            return milkToEffect.TryGetValue(milk, out HediffDef effect) ? effect : null;
+        }
+
+        /// <summary>
+        /// Every milk def this mod knows about: the default human milk plus each mapped
+        /// xenotype milk. Used to extend recipes that accept vanilla milk.
+        /// </summary>
+        public static List<ThingDef> AllMilkDefs()
+        {
+            List<ThingDef> result = new List<ThingDef>();
+            if (MilkHuman != null)
+            {
+                result.Add(MilkHuman);
+            }
+
+            EnsureRegistry();
+            foreach (KeyValuePair<ThingDef, HediffDef> pair in milkToEffect)
+            {
+                if (pair.Key != null && !result.Contains(pair.Key))
+                {
+                    result.Add(pair.Key);
+                }
+            }
+
+            return result;
         }
     }
 }

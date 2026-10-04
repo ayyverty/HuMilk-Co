@@ -80,12 +80,14 @@ namespace HuMilkCo
                     continue;
                 }
 
-                if (!Pather_Utility.can_path_to_target(pawn, victim))
+                if (!pawn.CanReserve(victim, xxx.max_rapists_per_prisoner, 0))
                 {
                     continue;
                 }
 
-                if (!pawn.CanReserve(victim, xxx.max_rapists_per_prisoner, 0))
+                // Pathing is the expensive check, so it runs last and only for a candidate
+                // that would otherwise become the new nearest target.
+                if (!Pather_Utility.can_path_to_target(pawn, victim))
                 {
                     continue;
                 }

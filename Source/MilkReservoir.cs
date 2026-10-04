@@ -85,18 +85,26 @@ namespace HuMilkCo
         }
 
         /// <summary>
-        /// Extract all currently available milk into a <c>MilkHuman</c> item, drain the shared
-        /// lactation charge, and apply the forced milking social consequences when the victim is
-        /// not willing. Draining the charge means any baby will have to wait for it to refill.
+        /// Extract all currently available milk into the milk item for the victim's xenotype,
+        /// drain the shared lactation charge, and apply the forced milking social consequences
+        /// when the victim is not willing. Draining the charge means any baby will have to wait
+        /// for it to refill.
         /// </summary>
         public static void MilkPawn(Pawn victim, Pawn milker)
         {
-            if (victim == null || victim.Map == null || MilkDefs.MilkHuman == null)
+            if (victim == null || victim.Map == null)
             {
                 return;
             }
 
             if (!TryGetCharge(victim, out float factor, out float capacity))
+            {
+                return;
+            }
+
+            // Resolve the product before draining so a missing milk def can never destroy milk.
+            ThingDef milkDef = MilkDefs.GetMilkForPawn(victim);
+            if (milkDef == null)
             {
                 return;
             }
@@ -109,7 +117,7 @@ namespace HuMilkCo
                 comp.TryCharge(-comp.Charge);
             }
 
-            Thing milk = ThingMaker.MakeThing(MilkDefs.MilkHuman);
+            Thing milk = ThingMaker.MakeThing(milkDef);
             milk.stackCount = count;
             GenPlace.TryPlaceThing(milk, victim.Position, victim.Map, ThingPlaceMode.Near);
 

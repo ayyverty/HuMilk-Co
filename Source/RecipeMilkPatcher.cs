@@ -6,18 +6,22 @@ using Verse;
 namespace HuMilkCo
 {
     /// <summary>
-    /// Makes Human Milk usable in any recipe that currently requires the vanilla 'Milk' defName.
-    /// Runs once after all defs are resolved. Category-based recipes (FoodRaw/AnimalProductRaw)
-    /// already accept it automatically.
+    /// Makes every HuMilk Co milk usable in any recipe that currently requires the
+    /// vanilla 'Milk' defName. Runs once after all defs are resolved. Category-based
+    /// recipes (FoodRaw/AnimalProductRaw) already accept the milks automatically.
     /// </summary>
     public static class RecipeMilkPatcher
     {
         public static void PatchRecipes()
         {
             ThingDef vanillaMilk = DefDatabase<ThingDef>.GetNamedSilentFail("Milk");
-            ThingDef humanMilk = DefDatabase<ThingDef>.GetNamedSilentFail("MilkHuman");
+            if (vanillaMilk == null)
+            {
+                return;
+            }
 
-            if (vanillaMilk == null || humanMilk == null)
+            List<ThingDef> milks = MilkDefs.AllMilkDefs();
+            if (milks.Count == 0)
             {
                 return;
             }
@@ -37,9 +41,19 @@ namespace HuMilkCo
                     }
 
                     IEnumerable<ThingDef> allowed = ingredient.filter.AllowedThingDefs;
-                    if (allowed != null && allowed.Count() == 1 && allowed.Contains(vanillaMilk))
+                    if (allowed == null || !allowed.Contains(vanillaMilk))
                     {
-                        ingredient.filter.SetAllow(humanMilk, true);
+                        continue;
+                    }
+
+                    for (int i = 0; i < milks.Count; i++)
+                    {
+                        // Category-based filters (AnimalProductRaw etc.) already accept the
+                        // milks, so only patch what the filter would otherwise reject.
+                        if (milks[i] != null && !ingredient.filter.Allows(milks[i]))
+                        {
+                            ingredient.filter.SetAllow(milks[i], true);
+                        }
                     }
                 }
             }

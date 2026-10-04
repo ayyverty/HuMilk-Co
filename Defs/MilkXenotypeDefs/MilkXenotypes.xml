@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Links each xenotype to the milk its pawns produce and the effect that milk
+       grants. Add entries here to map custom xenotypes from other mods. -->
+
+  <MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
+    <defName>MilkXenotypeGenie</defName>
+    <xenotype>Genie</xenotype>
+    <milk>MilkHumanGenie</milk>
+    <effect>MilkEffectGenie</effect>
+  </MilkXenotypeDef>
+
+  <MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
+    <defName>MilkXenotypeHighmate</defName>
+    <xenotype>Highmate</xenotype>
+    <milk>MilkHumanHighmate</milk>
+    <effect>MilkEffectHighmate</effect>
+  </MilkXenotypeDef>
+
+  <MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
+    <defName>MilkXenotypeHussar</defName>
+    <xenotype>Hussar</xenotype>
+    <milk>MilkHumanHussar</milk>
+    <effect>MilkEffectHussar</effect>
+  </MilkXenotypeDef>
+
+  <MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
+    <defName>MilkXenotypeNeanderthal</defName>
+    <xenotype>Neanderthal</xenotype>
+    <milk>MilkHumanNeanderthal</milk>
+    <effect>MilkEffectNeanderthal</effect>
+  </MilkXenotypeDef>
+
+  <MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
+    <defName>MilkXenotypePigskin</defName>
+    <xenotype>Pigskin</xenotype>
+    <milk>MilkHumanPigskin</milk>
+    <effect>MilkEffectPigskin</effect>
+  </MilkXenotypeDef>
+
+  <MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
+    <defName>MilkXenotypeDirtmole</defName>
+    <xenotype>Dirtmole</xenotype>
+    <milk>MilkHumanDirtmole</milk>
+    <effect>MilkEffectDirtmole</effect>
+  </MilkXenotypeDef>
+
+  <MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
+    <defName>MilkXenotypeImpid</defName>
+    <xenotype>Impid</xenotype>
+    <milk>MilkHumanImpid</milk>
+    <effect>MilkEffectImpid</effect>
+  </MilkXenotypeDef>
+
+  <MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
+    <defName>MilkXenotypeWaster</defName>
+    <xenotype>Waster</xenotype>
+    <milk>MilkHumanWaster</milk>
+    <effect>MilkEffectWaster</effect>
+  </MilkXenotypeDef>
+
+  <MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
+    <defName>MilkXenotypeYttakin</defName>
+    <xenotype>Yttakin</xenotype>
+    <milk>MilkHumanYttakin</milk>
+    <effect>MilkEffectYttakin</effect>
+  </MilkXenotypeDef>
+
+  <MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
+    <defName>MilkXenotypeSanguophage</defName>
+    <xenotype>Sanguophage</xenotype>
+    <milk>MilkHumanSanguophage</milk>
+    <effect>MilkEffectSanguophage</effect>
+  </MilkXenotypeDef>
+
+</Defs>
