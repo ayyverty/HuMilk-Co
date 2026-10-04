@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Mood thought for Hucows right after being milked. +20, non-stacking, 6 hours. -->
+  <ThoughtDef>
+    <defName>FreshlyMilkedMood</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.25</durationDays>
+    <stackLimit>1</stackLimit>
+    <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>Freshly Milked</label>
+        <description>My udders are still tingling from being milked.</description>
+        <baseMoodEffect>20</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Situational thought for Hucows who have not been milked in the past day. Lasts
+       until the pawn is milked again. -15 mood. -->
+  <ThoughtDef>
+    <defName>SoreUdders</defName>
+    <thoughtClass>Thought_Situational</thoughtClass>
+    <workerClass>HuMilkCo.ThoughtWorker_SoreUdders</workerClass>
+    <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>Sore Udders</label>
+        <description>My udders are swollen and painfully sore. I need to be milked.</description>
+        <baseMoodEffect>-15</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

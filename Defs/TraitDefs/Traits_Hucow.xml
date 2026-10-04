@@ -3,12 +3,33 @@
 
   <TraitDef>
     <defName>Hucow</defName>
-    <label>hucow</label>
-    <description>[PAWN_nameDef] is a hucow - docile, bred for milk, and content to be milked like livestock. Willing to be milked without restraints and produces more milk.</description>
+    <label>Hucow</label>
+    <description>[PAWN_nameDef] is a hucow - docile, bred for milk, and content to be milked like livestock. Willing to be milked without restraints and produces more milk. Cannot do most work, and must be milked daily or {PAWN_possessive} udders grow sore.</description>
     <commonality>0</commonality>
+    <!-- Livestock are only good for hauling, cleaning, and childcare. Patient and
+         PatientBedRest stay enabled so they can still be treated medically. -->
+    <disabledWorkTypes>
+      <li>Firefighter</li>
+      <li>Doctor</li>
+      <li>BasicWorker</li>
+      <li>Warden</li>
+      <li>Handling</li>
+      <li>Cooking</li>
+      <li>Hunting</li>
+      <li>Construction</li>
+      <li>Growing</li>
+      <li>Mining</li>
+      <li>PlantCutting</li>
+      <li>Smithing</li>
+      <li>Tailoring</li>
+      <li>Art</li>
+      <li>Crafting</li>
+      <li>Research</li>
+      <li MayRequire="ludeon.rimworld.anomaly">DarkStudy</li>
+    </disabledWorkTypes>
     <degreeDatas>
       <li>
-        <label>hucow</label>
+        <label>Hucow</label>
         <description>[PAWN_nameDef] is a hucow - docile, bred for milk, and content to be milked like livestock. Willing to be milked without restraints and produces more milk.</description>
         <statFactors>
           <RJW_MilkProduction>1.5</RJW_MilkProduction>

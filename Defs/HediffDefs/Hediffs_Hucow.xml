@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Invisible per-pawn tracking hediff for Hucow progression (milking count and last
+       milking time) and the Sore Udders thought. The hediff class overrides Visible. -->
+  <HediffDef>
+    <defName>MilkingProgress</defName>
+    <hediffClass>HuMilkCo.Hediff_MilkingProgress</hediffClass>
+    <label>Milking Progress</label>
+    <description>Tracks how often and how recently a pawn has been milked.</description>
+    <defaultLabelColor>(0.80,0.80,0.80)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <isBad>false</isBad>
+    <initialSeverity>0.5</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+  </HediffDef>
+
+</Defs>

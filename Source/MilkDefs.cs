@@ -152,6 +152,48 @@ namespace HuMilkCo
             }
         }
 
+        private static HediffDef milkingProgress;
+        public static HediffDef MilkingProgress
+        {
+            get
+            {
+                if (milkingProgress == null)
+                {
+                    milkingProgress = DefDatabase<HediffDef>.GetNamedSilentFail("MilkingProgress");
+                }
+
+                return milkingProgress;
+            }
+        }
+
+        private static ThoughtDef freshlyMilkedMood;
+        public static ThoughtDef FreshlyMilkedMood
+        {
+            get
+            {
+                if (freshlyMilkedMood == null)
+                {
+                    freshlyMilkedMood = DefDatabase<ThoughtDef>.GetNamedSilentFail("FreshlyMilkedMood");
+                }
+
+                return freshlyMilkedMood;
+            }
+        }
+
+        private static ThoughtDef soreUdders;
+        public static ThoughtDef SoreUdders
+        {
+            get
+            {
+                if (soreUdders == null)
+                {
+                    soreUdders = DefDatabase<ThoughtDef>.GetNamedSilentFail("SoreUdders");
+                }
+
+                return soreUdders;
+            }
+        }
+
         private static ThoughtDef pleasureFromMilking;
         public static ThoughtDef PleasureFromMilking
         {

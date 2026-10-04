@@ -87,10 +87,19 @@ namespace HuMilkCo
                 pawn.health.hediffSet.HasHediff(MilkDefs.AphrolactoneAddiction);
         }
 
+        public static bool IsHucow(Pawn pawn)
+        {
+            if (MilkDefs.Hucow == null || pawn?.story?.traits == null)
+            {
+                return false;
+            }
+
+            return pawn.story.traits.HasTrait(MilkDefs.Hucow);
+        }
+
         public static bool IsWillingToBeMilked(Pawn pawn)
         {
-            if (MilkDefs.Hucow != null && pawn.story != null && pawn.story.traits != null &&
-                pawn.story.traits.HasTrait(MilkDefs.Hucow))
+            if (IsHucow(pawn))
             {
                 return true;
             }

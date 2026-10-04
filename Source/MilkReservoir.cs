@@ -154,6 +154,8 @@ namespace HuMilkCo
             milk.stackCount = count;
             GenPlace.TryPlaceThing(milk, victim.Position, victim.Map, ThingPlaceMode.Near);
 
+            MilkingTracker.RecordMilking(victim);
+
             if (!MilkHelper.IsWillingToBeMilked(victim))
             {
                 ApplyForcedConsequences(victim, milker);
