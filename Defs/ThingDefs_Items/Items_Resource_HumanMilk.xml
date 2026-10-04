@@ -4,7 +4,7 @@
   <!-- Shared base for all HuMilk Co milk. Per-milk defs inherit this and add their
        own market value, tint, and (for xenotype milks) an effect ingestion doer. -->
   <ThingDef Abstract="True" Name="HumanMilkBase" ParentName="OrganicProductBase">
-    <label>human milk</label>
+    <label>Human Milk</label>
     <description>Milk expressed from a lactating human or human-like pawn. A natural commodity in colonies that keep milkable pawns.</description>
     <graphicData>
       <texPath>Things/Item/Resource/Milk</texPath>
@@ -38,7 +38,7 @@
        No special effect. -->
   <ThingDef ParentName="HumanMilkBase">
     <defName>MilkHuman</defName>
-    <label>human milk</label>
+    <label>Human Milk</label>
     <description>Milk expressed from a lactating human or human-like pawn. A natural commodity in colonies that keep milkable pawns.</description>
     <statBases>
       <MarketValue>6</MarketValue>

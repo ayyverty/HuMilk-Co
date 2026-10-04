@@ -1,1 +1,6 @@
 .vscode/settings.json
+
+# MSBuild build artifacts. The shipped assembly in Assemblies/ stays tracked;
+# everything under Source/obj and Source/bin is regenerated on every build.
+Source/obj/
+Source/bin/

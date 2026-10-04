@@ -74,4 +74,39 @@
     <effect>MilkEffectSanguophage</effect>
   </MilkXenotypeDef>
 
+  <MilkXenotypeDef MayRequire="Sov.Tengri">
+    <defName>MilkXenotypeMolong</defName>
+    <xenotype>GS_Molong</xenotype>
+    <milk>MilkHumanMolong</milk>
+    <effect>MilkEffectMolong</effect>
+  </MilkXenotypeDef>
+
+  <MilkXenotypeDef MayRequire="Sov.Tenmo">
+    <defName>MilkXenotypeGeist</defName>
+    <xenotype>GS_Geist</xenotype>
+    <milk>MilkHumanGeist</milk>
+    <effect>MilkEffectGeist</effect>
+  </MilkXenotypeDef>
+
+  <MilkXenotypeDef MayRequire="det.halffoot">
+    <defName>MilkXenotypeHalffoot</defName>
+    <xenotype>DV_Halffoot</xenotype>
+    <milk>MilkHumanHalffoot</milk>
+    <effect>MilkEffectHalffoot</effect>
+  </MilkXenotypeDef>
+
+  <MilkXenotypeDef MayRequire="det.boglegs">
+    <defName>MilkXenotypeBogleg</defName>
+    <xenotype>DV_Bogleg</xenotype>
+    <milk>MilkHumanBogleg</milk>
+    <effect>MilkEffectBogleg</effect>
+  </MilkXenotypeDef>
+
+  <MilkXenotypeDef MayRequire="det.stoneborn">
+    <defName>MilkXenotypeStoneborn</defName>
+    <xenotype>Stoneborn</xenotype>
+    <milk>MilkHumanStoneborn</milk>
+    <effect>MilkEffectStoneborn</effect>
+  </MilkXenotypeDef>
+
 </Defs>

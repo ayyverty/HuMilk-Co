@@ -21,6 +21,11 @@ namespace HuMilkCo
         /// </summary>
         public float hemogenRestoreOnXenotype;
 
+        /// <summary>
+        /// Whether ingestion immediately ends any mental break the drinker is in.
+        /// </summary>
+        public bool endMentalBreakOnIngest;
+
         public HediffCompProperties_MilkEffectXenotype()
         {
             compClass = typeof(HediffComp_MilkEffectXenotype);
@@ -36,7 +41,7 @@ namespace HuMilkCo
     /// Effect hediff whose stage depends on the drinker's xenotype (used by Toxic Milk
     /// and Blood Milk). Stage 0 is the non-target variant, stage 1 the target variant.
     /// Also runs any instant ingestion side effects: hemogen restore for the target
-    /// xenotype, toxic buildup for non-targets.
+    /// xenotype, toxic buildup for non-targets, ending mental breaks.
     /// </summary>
     public class Hediff_MilkEffectXenotype : HediffWithComps
     {
@@ -56,7 +61,19 @@ namespace HuMilkCo
             }
         }
 
-        public override int CurStageIndex => IsTargetXenotype ? 1 : 0;
+        /// <summary>
+        /// Stage 1 for the target xenotype, stage 0 otherwise. Clamped to the def's stage
+        /// count so a single-stage def (e.g. Molong, which sets no target xenotype) can
+        /// never index past its own stage list.
+        /// </summary>
+        public override int CurStageIndex
+        {
+            get
+            {
+                int index = IsTargetXenotype ? 1 : 0;
+                return def.stages != null && index < def.stages.Count ? index : 0;
+            }
+        }
 
         public override void PostAdd(DamageInfo? dinfo)
         {
@@ -75,6 +92,11 @@ namespace HuMilkCo
             else if (!IsTargetXenotype && props.toxicBuildupOnNonXenotype > 0f)
             {
                 HealthUtility.AdjustSeverity(pawn, HediffDefOf.ToxicBuildup, props.toxicBuildupOnNonXenotype);
+            }
+
+            if (props.endMentalBreakOnIngest && pawn.mindState?.mentalStateHandler?.CurState != null)
+            {
+                pawn.mindState.mentalStateHandler.CurState.RecoverFromState();
             }
         }
     }

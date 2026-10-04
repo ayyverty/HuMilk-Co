@@ -4,7 +4,7 @@
   <!-- Genie -->
   <ThingDef ParentName="HumanMilkBase">
     <defName>MilkHumanGenie</defName>
-    <label>genie milk</label>
+    <label>Genie Milk</label>
     <description>Infused with the genie's intellect, this milk sharpens the mind but decreases pain tolerance.</description>
     <graphicData>
       <color>(0.70,0.85,1.00)</color>
@@ -22,7 +22,7 @@
   <!-- Highmate -->
   <ThingDef ParentName="HumanMilkBase">
     <defName>MilkHumanHighmate</defName>
-    <label>highmate milk</label>
+    <label>Highmate Milk</label>
     <description>This milk lifts the drinker's spirits and makes them a more persuasive companion.</description>
     <graphicData>
       <color>(1.00,0.70,0.80)</color>
@@ -40,7 +40,7 @@
   <!-- Hussar -->
   <ThingDef ParentName="HumanMilkBase">
     <defName>MilkHumanHussar</defName>
-    <label>hussar milk</label>
+    <label>Hussar Milk</label>
     <description>Saturated with combat-enhancing compounds, this milk grants a burst of speed and melee agility - at the cost of a ravenous appetite.</description>
     <graphicData>
       <color>(1.00,0.75,0.35)</color>
@@ -58,7 +58,7 @@
   <!-- Neanderthal -->
   <ThingDef ParentName="HumanMilkBase">
     <defName>MilkHumanNeanderthal</defName>
-    <label>neanderthal milk</label>
+    <label>Neanderthal Milk</label>
     <description>This thick and hearty milk bolsters the immune system and slows bleeding.</description>
     <graphicData>
       <color>(0.72,0.58,0.42)</color>
@@ -76,7 +76,7 @@
   <!-- Pigskin -->
   <ThingDef ParentName="HumanMilkBase">
     <defName>MilkHumanPigskin</defName>
-    <label>pigskin milk</label>
+    <label>Pigskin Milk</label>
     <description>Kind of greasy and weird, this milk is cheap and filling. Handy during famines.</description>
     <graphicData>
       <color>(1.00,0.75,0.70)</color>
@@ -94,7 +94,7 @@
   <!-- Dirtmole -->
   <ThingDef ParentName="HumanMilkBase">
     <defName>MilkHumanDirtmole</defName>
-    <label>dirtmole milk</label>
+    <label>Dirtmole Milk</label>
     <description>Rich with minerals, this milk improves the drinker's mining and drilling ability, but leaves them sluggish and sensitive to light.</description>
     <graphicData>
       <color>(0.65,0.65,0.65)</color>
@@ -112,7 +112,7 @@
   <!-- Impid -->
   <ThingDef ParentName="HumanMilkBase">
     <defName>MilkHumanImpid</defName>
-    <label>spicy milk</label>
+    <label>Spicy Milk</label>
     <description>Hot! This milk increases movement speed and fire resistance, while warming the body.</description>
     <graphicData>
       <color>(1.00,0.45,0.25)</color>
@@ -130,7 +130,7 @@
   <!-- Waster -->
   <ThingDef ParentName="HumanMilkBase">
     <defName>MilkHumanWaster</defName>
-    <label>toxic milk</label>
+    <label>Toxic Milk</label>
     <description>Milk only a waster would love. Bitter and tainted, this milk is toxic.</description>
     <graphicData>
       <color>(0.55,0.85,0.45)</color>
@@ -148,7 +148,7 @@
   <!-- Yttakin -->
   <ThingDef ParentName="HumanMilkBase">
     <defName>MilkHumanYttakin</defName>
-    <label>yttakin milk</label>
+    <label>Yttakin Milk</label>
     <description>This warm milk gives you a warm and fuzzy feeling, improving animal handling and cold tolerance.</description>
     <graphicData>
       <color>(0.92,0.88,0.78)</color>
@@ -166,7 +166,7 @@
   <!-- Sanguophage -->
   <ThingDef ParentName="HumanMilkBase">
     <defName>MilkHumanSanguophage</defName>
-    <label>blood milk</label>
+    <label>Blood Milk</label>
     <description>A deep crimson milk that restores hemogen. Not for human consumption.</description>
     <graphicData>
       <color>(0.75,0.15,0.20)</color>
@@ -177,6 +177,101 @@
     <ingestible>
       <outcomeDoers>
         <li Class="HuMilkCo.IngestionOutcomeDoer_MilkEffect" />
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- Molong (Molong Xenotype) -->
+  <ThingDef ParentName="HumanMilkBase" MayRequire="Sov.Tengri">
+    <defName>MilkHumanMolong</defName>
+    <label>Molong Milk</label>
+    <description>Cool and calming. Drinking it settles the drinker's mind, and any mental break they were suffering comes to an abrupt end.</description>
+    <graphicData>
+      <color>(0.40,0.80,0.80)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>21</MarketValue>
+    </statBases>
+    <ingestible>
+      <outcomeDoers>
+        <li Class="HuMilkCo.IngestionOutcomeDoer_MilkEffect" />
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- Geist (Geist Xenotype) -->
+  <ThingDef ParentName="HumanMilkBase" MayRequire="Sov.Tenmo">
+    <defName>MilkHumanGeist</defName>
+    <label>Geist Milk</label>
+    <description>Pale and bloodless. It quickens the drinker's reflexes, but their electroreceptive nerves are left wide open to any EMP discharge.</description>
+    <graphicData>
+      <color>(0.88,0.92,0.95)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>16</MarketValue>
+    </statBases>
+    <ingestible>
+      <outcomeDoers>
+        <li Class="HuMilkCo.IngestionOutcomeDoer_MilkEffect" />
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- Half-foot (Det's Xenotypes - Half-foot) -->
+  <ThingDef ParentName="HumanMilkBase" MayRequire="det.halffoot">
+    <defName>MilkHumanHalffoot</defName>
+    <label>Half-Foot Milk</label>
+    <description>A rich, satisfying milk for small hands. It sharpens the drinker's crafting and speeds their steps, though it does nothing for their manners or their fists.</description>
+    <graphicData>
+      <color>(0.93,0.89,0.78)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>14</MarketValue>
+    </statBases>
+    <ingestible>
+      <outcomeDoers>
+        <li Class="HuMilkCo.IngestionOutcomeDoer_MilkEffect" />
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- Boglegs (Det's Xenotypes - Boglegs) -->
+  <ThingDef ParentName="HumanMilkBase" MayRequire="det.boglegs">
+    <defName>MilkHumanBogleg</defName>
+    <label>Bog Milk</label>
+    <description>Thick, oily and foul-tasting. The drinker heals quickly and shrugs off disease, and can talk a merchant down to his last credit - but they will not be happy about any of it.</description>
+    <graphicData>
+      <color>(0.55,0.55,0.25)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>12</MarketValue>
+    </statBases>
+    <ingestible>
+      <outcomeDoers>
+        <li Class="HuMilkCo.IngestionOutcomeDoer_MilkEffect" />
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <!-- Stoneborn (Det's Xenotypes - Stoneborn) -->
+  <ThingDef ParentName="HumanMilkBase" MayRequire="det.stoneborn">
+    <defName>MilkHumanStoneborn</defName>
+    <label>Stone Milk</label>
+    <description>A hard, sediment-heavy drink that leaves a stoneborn in the gut. The drinker builds and mines with a stoneborn's ease and lifts their spirits - and it goes down like strong liquor.</description>
+    <graphicData>
+      <color>(0.62,0.62,0.65)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>18</MarketValue>
+    </statBases>
+    <ingestible>
+      <drugCategory>Hard</drugCategory>
+      <outcomeDoers>
+        <li Class="HuMilkCo.IngestionOutcomeDoer_MilkEffect" />
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>AlcoholHigh</hediffDef>
+          <severity>0.30</severity>
+        </li>
       </outcomeDoers>
     </ingestible>
   </ThingDef>
