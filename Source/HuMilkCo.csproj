@@ -15,6 +15,7 @@
     <DebugType>portable</DebugType>
     <Optimize>true</Optimize>
     <WarningLevel>4</WarningLevel>
+    <RJWAssemblyPath Condition="'$(RJWAssemblyPath)' == ''">/home/avery/games/SteamLibrary/steamapps/common/RimWorld/Mods/rjw-master-fork/1.6/Assemblies/RJW.dll</RJWAssemblyPath>
   </PropertyGroup>
 
   <ItemDefinitionGroup>
@@ -25,7 +26,7 @@
   <ItemGroup>
     <!-- Reference the compiled RJW assembly (hard dependency, do not copy). -->
     <Reference Include="RJW">
-      <HintPath>/home/avery/games/SteamLibrary/steamapps/common/RimWorld/Mods/rjw-master-fork/1.6/Assemblies/RJW.dll</HintPath>
+      <HintPath>$(RJWAssemblyPath)</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
@@ -33,7 +34,6 @@
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.*" />
     <PackageReference Include="Lib.Harmony" Version="2.*" />
-    <PackageReference Include="RimWorld.MultiplayerAPI" Version="*" />
     <PackageReference Include="IsExternalInit" Version="*" />
   </ItemGroup>
 </Project>

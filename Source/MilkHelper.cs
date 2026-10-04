@@ -14,33 +14,32 @@ namespace HuMilkCo
 
         public static bool HasBreasts(Pawn pawn)
         {
-            List<Hediff> breasts = pawn.GetBreastList();
-            if (breasts == null)
-            {
-                return false;
-            }
-
-            for (int i = 0; i < breasts.Count; i++)
-            {
-                Hediff breast = breasts[i];
-                if (breast != null && breast.def != null && breast.def.defName != FeaturelessChestDefName)
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            GetBreastInfo(pawn, out bool hasBreasts, out _);
+            return hasBreasts;
         }
 
         public static float GetBreastVolumeTotal(Pawn pawn)
         {
+            GetBreastInfo(pawn, out _, out float volume);
+            return volume;
+        }
+
+        /// <summary>
+        /// Single pass over the breast hediffs returning both "has any non-featureless
+        /// chest" and the total breast volume. Centralizing this avoids building the
+        /// RJW breast list more than once when a caller needs both results.
+        /// </summary>
+        public static void GetBreastInfo(Pawn pawn, out bool hasBreasts, out float volume)
+        {
+            hasBreasts = false;
+            volume = 0f;
+
             List<Hediff> breasts = pawn.GetBreastList();
             if (breasts == null)
             {
-                return 0f;
+                return;
             }
 
-            float total = 0f;
             for (int i = 0; i < breasts.Count; i++)
             {
                 Hediff breast = breasts[i];
@@ -49,13 +48,12 @@ namespace HuMilkCo
                     continue;
                 }
 
+                hasBreasts = true;
                 if (PartSizeCalculator.TryGetBreastSize(breast, out BreastSize size))
                 {
-                    total += size.volume;
+                    volume += size.volume;
                 }
             }
-
-            return total;
         }
 
         public static bool IsLactating(Pawn pawn)
@@ -145,12 +143,65 @@ namespace HuMilkCo
         /// </summary>
         public static bool IsMilkingCandidate(Pawn target)
         {
-            if (!IsTargetSideCandidate(target))
+            if (!IsMilkingCandidateFast(target, out float breastVolume))
             {
                 return false;
             }
 
-            return MilkReservoir.IsFull(target);
+            return MilkReservoir.IsFullGivenVolume(target, breastVolume);
+        }
+
+        /// <summary>
+        /// Context-free target-side eligibility that also computes breast volume in the
+        /// same pass, so callers can reuse it for the capacity check instead of paying
+        /// for a second breast-list build. Used by the interval-rebuilt MilkCache.
+        /// </summary>
+        internal static bool IsMilkingCandidateFast(Pawn target, out float breastVolume)
+        {
+            breastVolume = 0f;
+            if (target == null || !target.Spawned || target.Dead || !target.RaceProps.Humanlike)
+            {
+                return false;
+            }
+
+            if (!(target.IsColonist || target.IsPrisonerOfColony || target.IsSlaveOfColony))
+            {
+                return false;
+            }
+
+            if (!IsLactating(target))
+            {
+                return false;
+            }
+
+            GetBreastInfo(target, out bool hasBreasts, out breastVolume);
+            if (!hasBreasts)
+            {
+                return false;
+            }
+
+            return IsWillingToBeMilked(target) || BoundHelper.IsBound(target);
+        }
+
+        /// <summary>
+        /// Cheap per-milker filter for the auto-milking scan. Only the bits that vary
+        /// per milker (map, Animals skill, self, target alive/spawned). Full target-side
+        /// eligibility is established by the MilkCache rebuild.
+        /// </summary>
+        public static bool IsMilkingCandidateFor(Pawn milker, Pawn target)
+        {
+            if (milker == target || target == null || !target.Spawned || target.Dead)
+            {
+                return false;
+            }
+
+            if (milker.skills == null ||
+                milker.skills.GetSkill(SkillDefOf.Animals).Level < HuMilkCoMod.Settings.RequiredAnimalsSkill)
+            {
+                return false;
+            }
+
+            return target.Map == milker.Map;
         }
 
         private static bool IsTargetEligible(Pawn milker, Pawn target)

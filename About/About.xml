@@ -17,11 +17,6 @@
 			<displayName>RimJobWorld</displayName>
 			<downloadUrl>https://gitgud.io/Ed86/rjw</downloadUrl>
 		</li>
-		<li>
-			<packageId>rim.job.world.onahole.ext</packageId>
-			<displayName>RJW Onahole Extension</displayName>
-			<downloadUrl>https://gitgud.io/splicing3089/rimjobworld-onahole-extension</downloadUrl>
-		</li>
 	</modDependencies>
 	<loadAfter>
 		<li>rim.job.world</li>

@@ -34,12 +34,13 @@ namespace HuMilkCo
         }
 
         /// <summary>
-        /// Any pawn that is sexually capable at all can be compelled to rape in
-        /// this state, regardless of RJW's vulnerability or sex-need requirements.
+        /// Only a pawn that can actually perform sex is driven to rape in this state,
+        /// regardless of RJW's vulnerability or sex-need requirements. Receptive-only
+        /// pawns are not compelled to perform.
         /// </summary>
         private static bool CanRapeForced(Pawn pawn)
         {
-            return xxx.can_fuck(pawn) || xxx.can_be_fucked(pawn);
+            return xxx.can_fuck(pawn);
         }
 
         private static Pawn FindNearestVictim(Pawn pawn)

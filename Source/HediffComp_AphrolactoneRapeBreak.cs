@@ -25,6 +25,12 @@ namespace HuMilkCo
 
         private int lastBreakTick = -999999;
 
+        public override void CompExposeData()
+        {
+            base.CompExposeData();
+            Scribe_Values.Look(ref lastBreakTick, "lastBreakTick", -999999);
+        }
+
         public override void CompPostTick(ref float severityAdjustment)
         {
             base.CompPostTick(ref severityAdjustment);

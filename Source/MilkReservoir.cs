@@ -19,21 +19,15 @@ namespace HuMilkCo
         /// </summary>
         public static float GetCapacity(Pawn pawn)
         {
-            float capacity = MilkHelper.GetBreastVolumeTotal(pawn) * HuMilkCoMod.Settings.LitresToMilkUnits;
+            MilkHelper.GetBreastInfo(pawn, out _, out float breastVolume);
+            float capacity = breastVolume * HuMilkCoMod.Settings.LitresToMilkUnits;
 
             if (MilkDefs.MilkProduction != null)
             {
-                try
+                float statValue = pawn.GetStatValue(MilkDefs.MilkProduction, true);
+                if (statValue > 1f)
                 {
-                    float statValue = pawn.GetStatValue(MilkDefs.MilkProduction, true);
-                    if (statValue > 1f)
-                    {
-                        capacity *= statValue;
-                    }
-                }
-                catch
-                {
-                    // Stat evaluation can fail for uninitialized pawns; use default capacity.
+                    capacity *= statValue;
                 }
             }
 
@@ -52,7 +46,38 @@ namespace HuMilkCo
 
         public static bool IsFull(Pawn pawn)
         {
-            return TryGetCharge(pawn, out float factor, out float capacity) && factor >= 0.999f;
+            return TryGetCharge(pawn, out float factor, out _) && factor >= 0.999f;
+        }
+
+        /// <summary>
+        /// Fullness check that reuses an already-computed breast volume, so the hot
+        /// auto-milking candidate scan doesn't pay for a second breast-list build.
+        /// </summary>
+        internal static bool IsFullGivenVolume(Pawn pawn, float breastVolume)
+        {
+            if (breastVolume <= 0f || pawn == null || pawn.Dead || pawn.Discarded ||
+                !MilkHelper.IsLactating(pawn))
+            {
+                return false;
+            }
+
+            float capacity = breastVolume * HuMilkCoMod.Settings.LitresToMilkUnits;
+            if (MilkDefs.MilkProduction != null)
+            {
+                float statValue = pawn.GetStatValue(MilkDefs.MilkProduction, true);
+                if (statValue > 1f)
+                {
+                    capacity *= statValue;
+                }
+            }
+
+            HediffComp_Chargeable comp = GetChargeComp(pawn);
+            if (comp == null || comp.Props.fullChargeAmount <= 0f)
+            {
+                return false;
+            }
+
+            return Mathf.Clamp01(comp.Charge / comp.Props.fullChargeAmount) >= 0.999f;
         }
 
         /// <summary>
@@ -102,6 +127,14 @@ namespace HuMilkCo
                 return;
             }
 
+            // Guard against producing milk below the configured minimum after the wait toil:
+            // a baby or another milker may have drained the victim during those ticks.
+            float available = capacity * factor;
+            if (available < HuMilkCoMod.Settings.MinMilkToMilk)
+            {
+                return;
+            }
+
             // Resolve the product before draining so a missing milk def can never destroy milk.
             ThingDef milkDef = MilkDefs.GetMilkForPawn(victim);
             if (milkDef == null)
@@ -109,7 +142,7 @@ namespace HuMilkCo
                 return;
             }
 
-            int count = Mathf.Max(1, Mathf.RoundToInt(capacity * factor));
+            int count = Mathf.Max(1, Mathf.RoundToInt(available));
 
             HediffComp_Chargeable comp = GetChargeComp(victim);
             if (comp != null)

@@ -75,6 +75,19 @@ namespace HuMilkCo
             }
         }
 
+        public override HediffStage CurStage
+        {
+            get
+            {
+                if (def.stages == null || def.stages.Count == 0)
+                {
+                    return null;
+                }
+
+                return def.stages[CurStageIndex];
+            }
+        }
+
         public override void PostAdd(DamageInfo? dinfo)
         {
             base.PostAdd(dinfo);

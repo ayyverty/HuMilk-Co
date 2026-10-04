@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -17,7 +16,7 @@ namespace HuMilkCo
 
             foreach (Pawn target in MilkCache.Candidates)
             {
-                if (MilkHelper.IsValidAutoMilkingTarget(pawn, target))
+                if (MilkHelper.IsMilkingCandidateFor(pawn, target))
                 {
                     yield return target;
                 }

@@ -220,23 +220,26 @@ namespace HuMilkCo
 
         private static Dictionary<XenotypeDef, MilkXenotypeDef> xenotypeToMilk;
         private static Dictionary<ThingDef, HediffDef> milkToEffect;
-        private static bool registryResolved;
+        private static List<MilkXenotypeDef> observedRegistryDefs;
 
         private static void EnsureRegistry()
         {
-            if (registryResolved)
+            // AllDefsListForReading is a stable instance between def reloads and a new
+            // instance after one. Comparing references invalidates the cache exactly then
+            // (dev-mode reloads, late def sets) without paying per-call cost.
+            List<MilkXenotypeDef> defs = DefDatabase<MilkXenotypeDef>.AllDefsListForReading;
+            if (observedRegistryDefs == defs)
             {
                 return;
             }
 
-            registryResolved = true;
+            observedRegistryDefs = defs;
             xenotypeToMilk = new Dictionary<XenotypeDef, MilkXenotypeDef>();
             milkToEffect = new Dictionary<ThingDef, HediffDef>();
 
-            List<MilkXenotypeDef> links = DefDatabase<MilkXenotypeDef>.AllDefsListForReading;
-            for (int i = 0; i < links.Count; i++)
+            for (int i = 0; i < defs.Count; i++)
             {
-                MilkXenotypeDef link = links[i];
+                MilkXenotypeDef link = defs[i];
                 if (link == null)
                 {
                     continue;

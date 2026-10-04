@@ -13,6 +13,22 @@ namespace HuMilkCo
     public static class QuirkBridge
     {
         private static MethodInfo hasQuirkMethod;
+        private static bool forkActiveChecked;
+        private static bool forkActive;
+
+        private static bool ForkActive
+        {
+            get
+            {
+                if (!forkActiveChecked)
+                {
+                    forkActiveChecked = true;
+                    forkActive = ModsConfig.IsActive("rjw.quirks.fork");
+                }
+
+                return forkActive;
+            }
+        }
 
         /// <summary>
         /// Returns true if <paramref name="pawn"/> has the given quirk def. Returns false
@@ -21,7 +37,7 @@ namespace HuMilkCo
         /// </summary>
         public static bool HasQuirk(Pawn pawn, Def def)
         {
-            if (pawn == null || def == null || !ModsConfig.IsActive("rjw.quirks.fork"))
+            if (pawn == null || def == null || !ForkActive)
             {
                 return false;
             }
