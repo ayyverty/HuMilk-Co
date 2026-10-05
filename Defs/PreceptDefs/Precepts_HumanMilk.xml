@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Ideology issue + precept options for how colonists feel about consuming human
+       milk. Every element is gated on Ideology so the whole feature degrades
+       gracefully when the DLC is absent. -->
+
+  <IssueDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>HumanMilkConsumption</defName>
+    <label>human milk consumption</label>
+    <iconPath>Things/Item/Resource/Milk</iconPath>
+  </IssueDef>
+
+  <!-- Abhorred -->
+  <PreceptDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>HumanMilkConsumption_Abhorred</defName>
+    <issue>HumanMilkConsumption</issue>
+    <label>abhorred</label>
+    <description>Human milk should only be consumed by babies!</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>60</displayOrderInIssue>
+    <displayOrderInImpact>100</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought">
+        <eventDef>ConsumedHumanMilk</eventDef>
+        <thought>ConsumedHumanMilk_Abhorred</thought>
+      </li>
+    </comps>
+  </PreceptDef>
+
+  <!-- Disliked -->
+  <PreceptDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>HumanMilkConsumption_Disliked</defName>
+    <issue>HumanMilkConsumption</issue>
+    <label>disliked</label>
+    <description>Human milk is gross, but it provides nutrition when needed.</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>50</displayOrderInIssue>
+    <displayOrderInImpact>100</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought">
+        <eventDef>ConsumedHumanMilk</eventDef>
+        <thought>ConsumedHumanMilk_Disliked</thought>
+      </li>
+    </comps>
+  </PreceptDef>
+
+  <!-- Don't care -->
+  <PreceptDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>HumanMilkConsumption_DontCare</defName>
+    <issue>HumanMilkConsumption</issue>
+    <label>don't care</label>
+    <description>Human milk is the same as any other milk.</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>40</displayOrderInIssue>
+    <displayOrderInImpact>100</displayOrderInImpact>
+    <defaultSelectionWeight>10</defaultSelectionWeight>
+  </PreceptDef>
+
+  <!-- Desired -->
+  <PreceptDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>HumanMilkConsumption_Desired</defName>
+    <issue>HumanMilkConsumption</issue>
+    <label>desired</label>
+    <description>Human milk is a delicious treat full of nutrients!</description>
+    <impact>Medium</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>100</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought">
+        <eventDef>ConsumedHumanMilk</eventDef>
+        <thought>ConsumedHumanMilk_Desired</thought>
+      </li>
+    </comps>
+  </PreceptDef>
+
+  <!-- Essential -->
+  <PreceptDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>HumanMilkConsumption_Essential</defName>
+    <issue>HumanMilkConsumption</issue>
+    <label>essential</label>
+    <description>We must drink human milk to become strong!</description>
+    <impact>High</impact>
+    <displayOrderInIssue>0</displayOrderInIssue>
+    <displayOrderInImpact>100</displayOrderInImpact>
+    <defaultSelectionWeight>1</defaultSelectionWeight>
+    <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought">
+        <eventDef>ConsumedHumanMilk</eventDef>
+        <thought>ConsumedHumanMilk_Essential</thought>
+      </li>
+      <li Class="PreceptComp_SituationalThought">
+        <thought>NoHumanMilk_Essential</thought>
+        <description>No human milk for 7 days</description>
+      </li>
+    </comps>
+  </PreceptDef>
+
+</Defs>

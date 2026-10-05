@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Invisible per-pawn tracker for human milk consumption: when tracking began (so
+       freshly-tracked pawns get a grace window) and the last tick human milk was
+       consumed. Drives the Ideology "No Human Milk" deprivation thought. -->
+  <HediffDef>
+    <defName>HumanMilkTracker</defName>
+    <hediffClass>HuMilkCo.Hediff_HumanMilkTracker</hediffClass>
+    <label>Human Milk Tracker</label>
+    <description>Tracks how recently a pawn has consumed human milk.</description>
+    <defaultLabelColor>(0.80,0.80,0.80)</defaultLabelColor>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <isBad>false</isBad>
+    <initialSeverity>0.5</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+  </HediffDef>
+
+</Defs>

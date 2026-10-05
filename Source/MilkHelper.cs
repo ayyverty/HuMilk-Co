@@ -111,8 +111,8 @@ namespace HuMilkCo
                 return true;
             }
 
-            // Checked last: this reaches into the quirks assembly reflectively, so it is the
-            // most expensive check here and runs on every candidate scan.
+            // Checked last: this reaches into the quirks assembly through a cached
+            // compiled delegate, so it stays cheap enough for the candidate scan.
             return QuirkBridge.HasQuirk(pawn, MilkDefs.MilkingQuirk);
         }
 
@@ -132,42 +132,17 @@ namespace HuMilkCo
         }
 
         /// <summary>
-        /// A pawn is a valid automatic-milking target when they pass the same checks as
-        /// <see cref="IsValidMilkingTarget"/> but are at full milk. One charge evaluation
-        /// instead of two so the work scanner stays cheap.
+        /// Context-free auto-milking candidate evaluation: computes, in a single pass,
+        /// whether the pawn is a valid target (colony member, lactating with breasts,
+        /// willing or bound, and a usable milk charge) plus the milk it has available
+        /// and whether it is full. Used by the interval-rebuilt <see cref="MilkCache"/>,
+        /// which stores the result so per-milker scans don't repeat this work.
         /// </summary>
-        public static bool IsValidAutoMilkingTarget(Pawn milker, Pawn target)
+        internal static bool TryGetMilkCandidate(Pawn target, out float availableMilk, out bool full)
         {
-            if (!IsTargetEligible(milker, target))
-            {
-                return false;
-            }
+            availableMilk = 0f;
+            full = false;
 
-            return MilkReservoir.IsFull(target);
-        }
-
-        /// <summary>
-        /// Context-free auto-milking candidate check (no milker, no map). Used by the
-        /// interval-rebuilt <see cref="MilkCache"/> to pre-filter spawned pawns cheaply.
-        /// </summary>
-        public static bool IsMilkingCandidate(Pawn target)
-        {
-            if (!IsMilkingCandidateFast(target, out float breastVolume))
-            {
-                return false;
-            }
-
-            return MilkReservoir.IsFullGivenVolume(target, breastVolume);
-        }
-
-        /// <summary>
-        /// Context-free target-side eligibility that also computes breast volume in the
-        /// same pass, so callers can reuse it for the capacity check instead of paying
-        /// for a second breast-list build. Used by the interval-rebuilt MilkCache.
-        /// </summary>
-        internal static bool IsMilkingCandidateFast(Pawn target, out float breastVolume)
-        {
-            breastVolume = 0f;
             if (target == null || !target.Spawned || target.Dead || !target.RaceProps.Humanlike)
             {
                 return false;
@@ -183,13 +158,25 @@ namespace HuMilkCo
                 return false;
             }
 
-            GetBreastInfo(target, out bool hasBreasts, out breastVolume);
+            GetBreastInfo(target, out bool hasBreasts, out float breastVolume);
             if (!hasBreasts)
             {
                 return false;
             }
 
-            return IsWillingToBeMilked(target) || BoundHelper.IsBound(target);
+            if (!(IsWillingToBeMilked(target) || BoundHelper.IsBound(target)))
+            {
+                return false;
+            }
+
+            if (!MilkReservoir.TryGetChargeState(target, breastVolume, out float capacity, out float chargeFactor))
+            {
+                return false;
+            }
+
+            availableMilk = capacity * chargeFactor;
+            full = chargeFactor >= 0.999f;
+            return true;
         }
 
         /// <summary>

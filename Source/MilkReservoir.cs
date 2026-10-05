@@ -44,24 +44,22 @@ namespace HuMilkCo
             return GetAvailableMilk(pawn) >= HuMilkCoMod.Settings.MinMilkToMilk;
         }
 
-        public static bool IsFull(Pawn pawn)
-        {
-            return TryGetCharge(pawn, out float factor, out _) && factor >= 0.999f;
-        }
-
         /// <summary>
         /// Fullness check that reuses an already-computed breast volume, so the hot
         /// auto-milking candidate scan doesn't pay for a second breast-list build.
+        /// Returns capacity and the 0..1 charge factor in a single pass.
         /// </summary>
-        internal static bool IsFullGivenVolume(Pawn pawn, float breastVolume)
+        internal static bool TryGetChargeState(Pawn pawn, float breastVolume, out float capacity, out float chargeFactor)
         {
-            if (breastVolume <= 0f || pawn == null || pawn.Dead || pawn.Discarded ||
-                !MilkHelper.IsLactating(pawn))
+            capacity = 0f;
+            chargeFactor = 0f;
+
+            if (pawn == null || pawn.Dead || pawn.Discarded || breastVolume <= 0f)
             {
                 return false;
             }
 
-            float capacity = breastVolume * HuMilkCoMod.Settings.LitresToMilkUnits;
+            capacity = breastVolume * HuMilkCoMod.Settings.LitresToMilkUnits;
             if (MilkDefs.MilkProduction != null)
             {
                 float statValue = pawn.GetStatValue(MilkDefs.MilkProduction, true);
@@ -71,13 +69,19 @@ namespace HuMilkCo
                 }
             }
 
+            if (capacity <= 0f)
+            {
+                return false;
+            }
+
             HediffComp_Chargeable comp = GetChargeComp(pawn);
             if (comp == null || comp.Props.fullChargeAmount <= 0f)
             {
                 return false;
             }
 
-            return Mathf.Clamp01(comp.Charge / comp.Props.fullChargeAmount) >= 0.999f;
+            chargeFactor = Mathf.Clamp01(comp.Charge / comp.Props.fullChargeAmount);
+            return true;
         }
 
         /// <summary>

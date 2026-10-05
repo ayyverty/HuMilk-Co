@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Thoughts backing the "Human Milk Consumption" ideology precept. The four memory
+       thoughts are granted by PreceptComp_SelfTookMemoryThought (no thoughtClass needed,
+       the comp forces it); the deprivation thought is a situational thought whose worker
+       reads the per-pawn HumanMilkTracker hediff. -->
+
+  <!-- Abhorred: -10 -->
+  <ThoughtDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>ConsumedHumanMilk_Abhorred</defName>
+    <durationDays>1</durationDays>
+    <doNotApplyToQuestLodgers>true</doNotApplyToQuestLodgers>
+    <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>Consumed Human Milk</label>
+        <description>I consumed human milk. Human milk should only be consumed by babies!</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Disliked: -5 -->
+  <ThoughtDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>ConsumedHumanMilk_Disliked</defName>
+    <durationDays>1</durationDays>
+    <doNotApplyToQuestLodgers>true</doNotApplyToQuestLodgers>
+    <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>Consumed Human Milk</label>
+        <description>I consumed human milk. It's gross, but it provides nutrition when needed.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Desired: +5 -->
+  <ThoughtDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>ConsumedHumanMilk_Desired</defName>
+    <durationDays>1</durationDays>
+    <doNotApplyToQuestLodgers>true</doNotApplyToQuestLodgers>
+    <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>Consumed Human Milk</label>
+        <description>I consumed human milk. It's a delicious treat full of nutrients!</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Essential: +5 -->
+  <ThoughtDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>ConsumedHumanMilk_Essential</defName>
+    <durationDays>1</durationDays>
+    <doNotApplyToQuestLodgers>true</doNotApplyToQuestLodgers>
+    <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>Consumed Human Milk</label>
+        <description>I consumed human milk. We must drink it to become strong!</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Essential: -10 after 7 days without human milk -->
+  <ThoughtDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>NoHumanMilk_Essential</defName>
+    <thoughtClass>Thought_Situational</thoughtClass>
+    <workerClass>HuMilkCo.ThoughtWorker_HumanMilkDeprivation</workerClass>
+    <doNotApplyToQuestLodgers>true</doNotApplyToQuestLodgers>
+    <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>No Human Milk</label>
+        <description>I haven't consumed any human milk in days. I must drink it to become strong!</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

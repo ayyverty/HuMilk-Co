@@ -5,240 +5,108 @@ using Verse;
 namespace HuMilkCo
 {
     /// <summary>
-    /// Cached references to the defs this mod defines or depends on. Lookups are
-    /// lazy (resolved on first use, re-resolved if null) so that missing optional
-    /// defs (e.g. Onahole binding hediffs) degrade gracefully instead of throwing
-    /// during load, and so the hot scan paths don't re-hit the def database.
+    /// Cached references to the defs this mod defines or depends on. Lookups are lazy
+    /// and each def resolves exactly once (even to null), so missing optional defs
+    /// (e.g. a not-loaded quirk fork) degrade gracefully without throwing during load,
+    /// and the hot scan paths never re-hit the def database for a def that is absent.
+    /// All defs are fully loaded before gameplay, so a single resolution is safe.
     /// </summary>
     public static class MilkDefs
     {
-        private static ThingDef milkHuman;
-        public static ThingDef MilkHuman
+        /// <summary>
+        /// Def reference that resolves once on first access and caches the result
+        /// permanently (including a null result for absent optional defs).
+        /// </summary>
+        private struct LazyDef<T> where T : Def
         {
-            get
+            private bool resolved;
+            private T value;
+
+            public T Get(string defName)
             {
-                if (milkHuman == null)
+                if (!resolved)
                 {
-                    milkHuman = DefDatabase<ThingDef>.GetNamedSilentFail("MilkHuman");
+                    resolved = true;
+                    value = DefDatabase<T>.GetNamedSilentFail(defName);
                 }
 
-                return milkHuman;
+                return value;
             }
         }
 
-        private static HediffDef lactating;
-        public static HediffDef Lactating
-        {
-            get
-            {
-                if (lactating == null)
-                {
-                    lactating = DefDatabase<HediffDef>.GetNamedSilentFail("Lactating");
-                }
+        private static LazyDef<ThingDef> milkHuman;
+        public static ThingDef MilkHuman => milkHuman.Get("MilkHuman");
 
-                return lactating;
-            }
-        }
+        private static LazyDef<HediffDef> lactating;
+        public static HediffDef Lactating => lactating.Get("Lactating");
 
-        private static HediffDef aphrolactoneLactation;
-        public static HediffDef AphrolactoneLactation
-        {
-            get
-            {
-                if (aphrolactoneLactation == null)
-                {
-                    aphrolactoneLactation = DefDatabase<HediffDef>.GetNamedSilentFail("AphrolactoneLactation");
-                }
+        private static LazyDef<HediffDef> aphrolactoneLactation;
+        public static HediffDef AphrolactoneLactation => aphrolactoneLactation.Get("AphrolactoneLactation");
 
-                return aphrolactoneLactation;
-            }
-        }
+        private static LazyDef<HediffDef> aphrolactoneAddiction;
+        public static HediffDef AphrolactoneAddiction => aphrolactoneAddiction.Get("AphrolactoneAddiction");
 
-        private static HediffDef aphrolactoneAddiction;
-        public static HediffDef AphrolactoneAddiction
-        {
-            get
-            {
-                if (aphrolactoneAddiction == null)
-                {
-                    aphrolactoneAddiction = DefDatabase<HediffDef>.GetNamedSilentFail("AphrolactoneAddiction");
-                }
+        private static LazyDef<NeedDef> chemicalAphrolactone;
+        public static NeedDef ChemicalAphrolactone => chemicalAphrolactone.Get("Chemical_Aphrolactone");
 
-                return aphrolactoneAddiction;
-            }
-        }
+        private static LazyDef<MentalStateDef> aphrolactoneRape;
+        public static MentalStateDef AphrolactoneRape => aphrolactoneRape.Get("AphrolactoneRape");
 
-        private static NeedDef chemicalAphrolactone;
-        public static NeedDef ChemicalAphrolactone
-        {
-            get
-            {
-                if (chemicalAphrolactone == null)
-                {
-                    chemicalAphrolactone = DefDatabase<NeedDef>.GetNamedSilentFail("Chemical_Aphrolactone");
-                }
+        private static LazyDef<StatDef> milkProduction;
+        public static StatDef MilkProduction => milkProduction.Get("RJW_MilkProduction");
 
-                return chemicalAphrolactone;
-            }
-        }
+        private static LazyDef<TraitDef> hucow;
+        public static TraitDef Hucow => hucow.Get("Hucow");
 
-        private static MentalStateDef aphrolactoneRape;
-        public static MentalStateDef AphrolactoneRape
-        {
-            get
-            {
-                if (aphrolactoneRape == null)
-                {
-                    aphrolactoneRape = DefDatabase<MentalStateDef>.GetNamedSilentFail("AphrolactoneRape");
-                }
+        private static LazyDef<ThoughtDef> forcedToBeMilked;
+        public static ThoughtDef ForcedToBeMilked => forcedToBeMilked.Get("ForcedToBeMilked");
 
-                return aphrolactoneRape;
-            }
-        }
+        private static LazyDef<ThoughtDef> forcedToBeMilkedMood;
+        public static ThoughtDef ForcedToBeMilkedMood => forcedToBeMilkedMood.Get("ForcedToBeMilkedMood");
 
-        private static StatDef milkProduction;
-        public static StatDef MilkProduction
-        {
-            get
-            {
-                if (milkProduction == null)
-                {
-                    milkProduction = DefDatabase<StatDef>.GetNamedSilentFail("RJW_MilkProduction");
-                }
+        private static LazyDef<HediffDef> milkingProgress;
+        public static HediffDef MilkingProgress => milkingProgress.Get("MilkingProgress");
 
-                return milkProduction;
-            }
-        }
+        private static LazyDef<HediffDef> humanMilkTracker;
+        public static HediffDef HumanMilkTracker => humanMilkTracker.Get("HumanMilkTracker");
 
-        private static TraitDef hucow;
-        public static TraitDef Hucow
-        {
-            get
-            {
-                if (hucow == null)
-                {
-                    hucow = DefDatabase<TraitDef>.GetNamedSilentFail("Hucow");
-                }
+        private static LazyDef<HistoryEventDef> consumedHumanMilk;
+        public static HistoryEventDef ConsumedHumanMilk => consumedHumanMilk.Get("ConsumedHumanMilk");
 
-                return hucow;
-            }
-        }
+        private static LazyDef<ThoughtDef> freshlyMilkedMood;
+        public static ThoughtDef FreshlyMilkedMood => freshlyMilkedMood.Get("FreshlyMilkedMood");
 
-        private static ThoughtDef forcedToBeMilked;
-        public static ThoughtDef ForcedToBeMilked
-        {
-            get
-            {
-                if (forcedToBeMilked == null)
-                {
-                    forcedToBeMilked = DefDatabase<ThoughtDef>.GetNamedSilentFail("ForcedToBeMilked");
-                }
+        private static LazyDef<ThoughtDef> soreUdders;
+        public static ThoughtDef SoreUdders => soreUdders.Get("SoreUdders");
 
-                return forcedToBeMilked;
-            }
-        }
+        private static LazyDef<ThoughtDef> pleasureFromMilking;
+        public static ThoughtDef PleasureFromMilking => pleasureFromMilking.Get("PleasureFromMilking");
 
-        private static ThoughtDef forcedToBeMilkedMood;
-        public static ThoughtDef ForcedToBeMilkedMood
-        {
-            get
-            {
-                if (forcedToBeMilkedMood == null)
-                {
-                    forcedToBeMilkedMood = DefDatabase<ThoughtDef>.GetNamedSilentFail("ForcedToBeMilkedMood");
-                }
+        private static LazyDef<JobDef> milkHumanJob;
+        public static JobDef MilkHumanJob => milkHumanJob.Get("MilkHuman");
 
-                return forcedToBeMilkedMood;
-            }
-        }
-
-        private static HediffDef milkingProgress;
-        public static HediffDef MilkingProgress
-        {
-            get
-            {
-                if (milkingProgress == null)
-                {
-                    milkingProgress = DefDatabase<HediffDef>.GetNamedSilentFail("MilkingProgress");
-                }
-
-                return milkingProgress;
-            }
-        }
-
-        private static ThoughtDef freshlyMilkedMood;
-        public static ThoughtDef FreshlyMilkedMood
-        {
-            get
-            {
-                if (freshlyMilkedMood == null)
-                {
-                    freshlyMilkedMood = DefDatabase<ThoughtDef>.GetNamedSilentFail("FreshlyMilkedMood");
-                }
-
-                return freshlyMilkedMood;
-            }
-        }
-
-        private static ThoughtDef soreUdders;
-        public static ThoughtDef SoreUdders
-        {
-            get
-            {
-                if (soreUdders == null)
-                {
-                    soreUdders = DefDatabase<ThoughtDef>.GetNamedSilentFail("SoreUdders");
-                }
-
-                return soreUdders;
-            }
-        }
-
-        private static ThoughtDef pleasureFromMilking;
-        public static ThoughtDef PleasureFromMilking
-        {
-            get
-            {
-                if (pleasureFromMilking == null)
-                {
-                    pleasureFromMilking = DefDatabase<ThoughtDef>.GetNamedSilentFail("PleasureFromMilking");
-                }
-
-                return pleasureFromMilking;
-            }
-        }
-
-        private static JobDef milkHumanJob;
-        public static JobDef MilkHumanJob
-        {
-            get
-            {
-                if (milkHumanJob == null)
-                {
-                    milkHumanJob = DefDatabase<JobDef>.GetNamedSilentFail("MilkHuman");
-                }
-
-                return milkHumanJob;
-            }
-        }
-
+        private static bool milkingQuirkResolved;
         private static Def milkingQuirk;
         public static Def MilkingQuirk
         {
             get
             {
-                if (milkingQuirk == null)
+                if (milkingQuirkResolved)
                 {
-                    // The 'Milking' quirk is defined by this mod but its class (RJWQuirksFork.QuirkDef)
-                    // only exists when rjw-quirks-fork is loaded. Resolve the def type via reflection
-                    // so a missing fork degrades gracefully instead of failing to load the assembly.
-                    if (ModsConfig.IsActive("rjw.quirks.fork"))
+                    return milkingQuirk;
+                }
+
+                milkingQuirkResolved = true;
+
+                // The 'Milking' quirk is defined by this mod but its class (RJWQuirksFork.QuirkDef)
+                // only exists when rjw-quirks-fork is loaded. Resolve the def type via reflection
+                // so a missing fork degrades gracefully instead of failing to load the assembly.
+                if (ModsConfig.IsActive("rjw.quirks.fork"))
+                {
+                    System.Type quirkDefType = System.Type.GetType("RJWQuirksFork.QuirkDef, RJWQuirksFork");
+                    if (quirkDefType != null)
                     {
-                        System.Type quirkDefType = System.Type.GetType("RJWQuirksFork.QuirkDef, RJWQuirksFork");
-                        if (quirkDefType != null)
-                        {
-                            milkingQuirk = GenDefDatabase.GetDef(quirkDefType, "Milking", false);
-                        }
+                        milkingQuirk = GenDefDatabase.GetDef(quirkDefType, "Milking", false);
                     }
                 }
 
@@ -246,19 +114,8 @@ namespace HuMilkCo
             }
         }
 
-        private static HediffDef dirtmoleEffect;
-        public static HediffDef DirtmoleEffect
-        {
-            get
-            {
-                if (dirtmoleEffect == null)
-                {
-                    dirtmoleEffect = DefDatabase<HediffDef>.GetNamedSilentFail("MilkEffectDirtmole");
-                }
-
-                return dirtmoleEffect;
-            }
-        }
+        private static LazyDef<HediffDef> dirtmoleEffect;
+        public static HediffDef DirtmoleEffect => dirtmoleEffect.Get("MilkEffectDirtmole");
 
         private static Dictionary<XenotypeDef, MilkXenotypeDef> xenotypeToMilk;
         private static Dictionary<ThingDef, HediffDef> milkToEffect;

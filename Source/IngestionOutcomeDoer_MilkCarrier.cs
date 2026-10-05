@@ -27,6 +27,10 @@ namespace HuMilkCo
             for (int i = 0; i < comp.ingredients.Count; i++)
             {
                 MilkEffectUtility.ApplyEffect(pawn, MilkDefs.GetMilkEffect(comp.ingredients[i]));
+                if (HumanMilkConsumption.IsHumanMilk(comp.ingredients[i]))
+                {
+                    HumanMilkConsumption.RecordConsumed(pawn);
+                }
             }
         }
     }

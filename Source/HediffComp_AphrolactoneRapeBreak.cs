@@ -69,8 +69,12 @@ namespace HuMilkCo
 
             if (GenTicks.TicksGame - lastBreakTick >= GenDate.TicksPerDay * BreakCooldownDays)
             {
-                lastBreakTick = GenTicks.TicksGame;
-                pawn.mindState.mentalStateHandler.TryStartMentalState(MilkDefs.AphrolactoneRape, "aphrolactone withdrawal");
+                // Only consume the cooldown when the break actually starts; a failed start
+                // (blocked by another state, etc.) must not suppress the next attempt.
+                if (pawn.mindState.mentalStateHandler.TryStartMentalState(MilkDefs.AphrolactoneRape, "aphrolactone withdrawal"))
+                {
+                    lastBreakTick = GenTicks.TicksGame;
+                }
             }
         }
     }

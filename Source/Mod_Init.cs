@@ -16,6 +16,7 @@ namespace HuMilkCo
 
             RecipeMilkPatcher.PatchRecipes();
             AttachMilkCarrierDoers();
+            AttachHumanMilkConsumptionDoers();
             AttachMoveSpeedLightStatPart();
         }
 
@@ -53,6 +54,46 @@ namespace HuMilkCo
                 if (!already)
                 {
                     def.ingestible.outcomeDoers.Add(new IngestionOutcomeDoer_MilkCarrier());
+                }
+            }
+        }
+
+        /// <summary>
+        /// Give every HuMilk Co milk ThingDef a consumption doer that records the
+        /// ConsumedHumanMilk history event, so the Ideology "Human Milk Consumption"
+        /// precept thoughts fire when a pawn drinks milk directly (meals are covered by
+        /// the ingredient-scanning milk-carrier doer). Guarded against double-attachment
+        /// on def reloads.
+        /// </summary>
+        private static void AttachHumanMilkConsumptionDoers()
+        {
+            List<ThingDef> milks = MilkDefs.AllMilkDefs();
+            for (int i = 0; i < milks.Count; i++)
+            {
+                ThingDef def = milks[i];
+                if (def?.ingestible == null)
+                {
+                    continue;
+                }
+
+                if (def.ingestible.outcomeDoers == null)
+                {
+                    def.ingestible.outcomeDoers = new List<IngestionOutcomeDoer>();
+                }
+
+                bool already = false;
+                for (int j = 0; j < def.ingestible.outcomeDoers.Count; j++)
+                {
+                    if (def.ingestible.outcomeDoers[j] is IngestionOutcomeDoer_HumanMilkConsumption)
+                    {
+                        already = true;
+                        break;
+                    }
+                }
+
+                if (!already)
+                {
+                    def.ingestible.outcomeDoers.Add(new IngestionOutcomeDoer_HumanMilkConsumption());
                 }
             }
         }

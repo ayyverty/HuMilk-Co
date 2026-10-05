@@ -19,6 +19,7 @@
 		</li>
 	</modDependencies>
 	<loadAfter>
+		<li>Ludeon.RimWorld.Ideology</li>
 		<li>rim.job.world</li>
 		<li>rim.job.world.onahole.ext</li>
 		<li>rjw.quirks.fork</li>

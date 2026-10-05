@@ -1,3 +1,5 @@
+using System;
+using System.Linq.Expressions;
 using System.Reflection;
 using HarmonyLib;
 using rjw;
@@ -15,16 +17,11 @@ namespace HuMilkCo
     [HarmonyPatch(typeof(Need_Joy), nameof(Need_Joy.NeedInterval))]
     public static class Patch_NeedJoy_Hucow
     {
-        private static readonly FieldInfo NeedPawnField = AccessTools.Field(typeof(Need), "pawn");
+        private static Func<Need, Pawn> needPawnGetter;
 
         public static bool Prefix(Need_Joy __instance)
         {
-            if (NeedPawnField == null)
-            {
-                return true;
-            }
-
-            Pawn pawn = (Pawn)NeedPawnField.GetValue(__instance);
+            Pawn pawn = GetPawn(__instance);
             if (pawn != null && MilkHelper.IsHucow(pawn))
             {
                 __instance.CurLevel = 1f;
@@ -32,6 +29,23 @@ namespace HuMilkCo
             }
 
             return true;
+        }
+
+        private static Pawn GetPawn(Need need)
+        {
+            if (needPawnGetter == null)
+            {
+                FieldInfo field = AccessTools.Field(typeof(Need), "pawn");
+                if (field == null)
+                {
+                    return null;
+                }
+
+                ParameterExpression instance = Expression.Parameter(typeof(Need), "need");
+                needPawnGetter = Expression.Lambda<Func<Need, Pawn>>(Expression.Field(instance, field), instance).Compile();
+            }
+
+            return needPawnGetter(need);
         }
     }
 

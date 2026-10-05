@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
@@ -10,7 +11,7 @@ namespace HuMilkCo
     /// </summary>
     public static class BoundHelper
     {
-        private static readonly string[] RjwBondageDefs =
+        private static readonly HashSet<string> RjwBondageDefs = new HashSet<string>
         {
             "RJW_Restraints",
             "BoundHands",
@@ -19,7 +20,7 @@ namespace HuMilkCo
             "RJW_Cocoon",
         };
 
-        private static readonly string[] OnaholeBindingDefs =
+        private static readonly HashSet<string> OnaholeBindingDefs = new HashSet<string>
         {
             "OnaholeBond",
             "OnaholeMilkingMachine",
@@ -38,15 +39,16 @@ namespace HuMilkCo
 
             HediffSet hediffSet = pawn.health.hediffSet;
 
-            foreach (Hediff hediff in hediffSet.hediffs)
+            for (int i = 0; i < hediffSet.hediffs.Count; i++)
             {
+                Hediff hediff = hediffSet.hediffs[i];
                 if (hediff == null || hediff.def == null)
                 {
                     continue;
                 }
 
                 string defName = hediff.def.defName;
-                if (Contains(RjwBondageDefs, defName) || Contains(OnaholeBindingDefs, defName))
+                if (RjwBondageDefs.Contains(defName) || OnaholeBindingDefs.Contains(defName))
                 {
                     return true;
                 }
@@ -71,19 +73,6 @@ namespace HuMilkCo
             if (capacities != null)
             {
                 return capacities.GetLevel(PawnCapacityDefOf.Consciousness) <= 0f;
-            }
-
-            return false;
-        }
-
-        private static bool Contains(string[] array, string value)
-        {
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] == value)
-                {
-                    return true;
-                }
             }
 
             return false;

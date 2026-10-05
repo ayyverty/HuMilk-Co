@@ -1,4 +1,5 @@
 using System;
+using System.Linq.Expressions;
 using System.Reflection;
 using Verse;
 
@@ -13,6 +14,7 @@ namespace HuMilkCo
     public static class QuirkBridge
     {
         private static MethodInfo hasQuirkMethod;
+        private static Func<Pawn, Def, bool> hasQuirkFunc;
         private static bool forkActiveChecked;
         private static bool forkActive;
 
@@ -42,28 +44,39 @@ namespace HuMilkCo
                 return false;
             }
 
-            if (hasQuirkMethod == null)
+            if (hasQuirkFunc == null)
             {
-                Type pawnExtType = Type.GetType("RJWQuirksFork.PawnExtensions, RJWQuirksFork");
-                if (pawnExtType == null)
+                if (hasQuirkMethod == null)
+                {
+                    Type pawnExtType = Type.GetType("RJWQuirksFork.PawnExtensions, RJWQuirksFork");
+                    if (pawnExtType == null)
+                    {
+                        return false;
+                    }
+
+                    hasQuirkMethod = pawnExtType.GetMethod(
+                        "HasQuirk",
+                        BindingFlags.Public | BindingFlags.Static,
+                        null,
+                        new[] { typeof(Pawn), def.GetType() },
+                        null);
+                }
+
+                if (hasQuirkMethod == null)
                 {
                     return false;
                 }
 
-                hasQuirkMethod = pawnExtType.GetMethod(
-                    "HasQuirk",
-                    BindingFlags.Public | BindingFlags.Static,
-                    null,
-                    new[] { typeof(Pawn), def.GetType() },
-                    null);
+                // Compile a direct call (with an internal cast to the quirk def type) so the
+                // hot candidate scan never pays for reflection Invoke or per-call array boxing.
+                ParameterExpression pawnParam = Expression.Parameter(typeof(Pawn), "pawn");
+                ParameterExpression defParam = Expression.Parameter(typeof(Def), "def");
+                MethodCallExpression call = Expression.Call(
+                    hasQuirkMethod, pawnParam, Expression.Convert(defParam, def.GetType()));
+                hasQuirkFunc = Expression.Lambda<Func<Pawn, Def, bool>>(call, pawnParam, defParam).Compile();
             }
 
-            if (hasQuirkMethod == null)
-            {
-                return false;
-            }
-
-            return (bool)hasQuirkMethod.Invoke(null, new object[] { pawn, def });
+            return hasQuirkFunc(pawn, def);
         }
     }
 }
