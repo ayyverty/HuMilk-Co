@@ -98,16 +98,14 @@ namespace HuMilkCo
 
                 milkingQuirkResolved = true;
 
-                // The 'Milking' quirk is defined by this mod but its class (RJWQuirksFork.QuirkDef)
-                // only exists when rjw-quirks-fork is loaded. Resolve the def type via reflection
-                // so a missing fork degrades gracefully instead of failing to load the assembly.
-                if (ModsConfig.IsActive("rjw.quirks.fork"))
+                // The 'Milking' quirk is defined by this mod but its class (RJWQuirks.QuirkDef or
+                // RJWQuirksFork.QuirkDef) only exists when a quirks mod is loaded. Resolve the def
+                // type through QuirkBridge so a missing quirks mod degrades gracefully instead of
+                // failing to load the assembly, and either quirks mod is accepted.
+                System.Type quirkDefType = QuirkBridge.QuirkDefType;
+                if (quirkDefType != null)
                 {
-                    System.Type quirkDefType = System.Type.GetType("RJWQuirksFork.QuirkDef, RJWQuirksFork");
-                    if (quirkDefType != null)
-                    {
-                        milkingQuirk = GenDefDatabase.GetDef(quirkDefType, "Milking", false);
-                    }
+                    milkingQuirk = GenDefDatabase.GetDef(quirkDefType, "Milking", false);
                 }
 
                 return milkingQuirk;

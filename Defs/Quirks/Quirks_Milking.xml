@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+  <!-- Original RJW Quirks (rjw.quirks) -->
   <RJWQuirks.QuirkDef MayRequire="rjw.quirks">
     <defName>Milking</defName>
     <label>Milking</label>
@@ -12,5 +13,18 @@
       <requirement Class="RJWQuirks.Requirement.IsAnimal" />
     </requires>
   </RJWQuirks.QuirkDef>
+
+  <!-- RJW Quirks Fork (rjw.quirks.fork) -->
+  <RJWQuirksFork.QuirkDef MayRequire="rjw.quirks.fork">
+    <defName>Milking</defName>
+    <label>Milking</label>
+    <description>{pawn} is comfortable with being milked and enjoys the sensation. Willing to be milked without restraints.</description>
+    <iconPath>UI/Icons/Quirks/Milking</iconPath>
+    <ignoreIllegalLabelCharacterConfigError>true</ignoreIllegalLabelCharacterConfigError>
+    <commonality>0.1</commonality>
+    <requires Class="RJWQuirksFork.Requirement.LogicalNot">
+      <requirement Class="RJWQuirksFork.Requirement.IsAnimal" />
+    </requires>
+  </RJWQuirksFork.QuirkDef>
 
 </Defs>

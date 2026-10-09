@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+  <!-- Original RJW Quirks (rjw.quirks) -->
   <RJWQuirks.QuirkDef MayRequire="rjw.quirks">
     <defName>Lactation</defName>
     <label>Lactation</label>
@@ -15,5 +16,21 @@
     </requires>
     <commonality>0.1</commonality>
   </RJWQuirks.QuirkDef>
+
+  <!-- RJW Quirks Fork (rjw.quirks.fork) -->
+  <RJWQuirksFork.QuirkDef MayRequire="rjw.quirks.fork">
+    <defName>Lactation</defName>
+    <label>Lactation</label>
+    <description>{pawn} is turned on by lactation. {pawn_pronoun} gets aroused when {pawn_possessive} partner is lactating.</description>
+    <iconPath>UI/Icons/Quirks/Lactation</iconPath>
+    <ignoreIllegalLabelCharacterConfigError>true</ignoreIllegalLabelCharacterConfigError>
+    <satisfiedBy Class="RJWQuirksFork.Condition.PartnerHasHediff">
+      <hediff>Lactating</hediff>
+    </satisfiedBy>
+    <requires Class="RJWQuirksFork.Requirement.LogicalNot">
+      <requirement Class="RJWQuirksFork.Requirement.IsAnimal" />
+    </requires>
+    <commonality>0.1</commonality>
+  </RJWQuirksFork.QuirkDef>
 
 </Defs>

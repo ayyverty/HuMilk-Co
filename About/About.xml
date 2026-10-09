@@ -23,5 +23,6 @@
 		<li>rim.job.world</li>
 		<li>rim.job.world.onahole.ext</li>
 		<li>rjw.quirks</li>
+		<li>rjw.quirks.fork</li>
 	</loadAfter>
 </ModMetaData>
