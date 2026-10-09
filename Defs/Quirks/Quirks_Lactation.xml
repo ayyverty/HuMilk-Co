@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <RJWQuirksFork.QuirkDef MayRequire="rjw.quirks.fork">
+  <RJWQuirksFork.QuirkDef MayRequire="rjw.quirks">
     <defName>Lactation</defName>
     <label>Lactation</label>
     <description>{pawn} is turned on by lactation. {pawn_pronoun} gets aroused when {pawn_possessive} partner is lactating.</description>
