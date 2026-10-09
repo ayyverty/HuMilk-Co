@@ -95,6 +95,6 @@ In the mod options you can tune:
 - Required Animals skill.
 - How long a milking session takes.
 
-## Credits
+## Notes
 
-Created by **toaster bath**. Built for RimJobWorld and Biotech, with optional integrations for RJW Quirks, Onahole Ext, and popular xenotype mods.
+Built for RimJobWorld and Biotech, with optional integrations for RJW Quirks, Onahole Ext, and popular xenotype mods.
