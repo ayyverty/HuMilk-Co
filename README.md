@@ -2,7 +2,7 @@
 
 > **Adult content warning.** HuMilk Co is an adult mod built on top of **RimJobWorld**. It deals with sexual themes and non-consensual scenarios. Do not install it if that isn't for you.
 
-HuMilk Co lets you run female colonists (and prisoners or slaves) as a milk herd. Milk lactating pawns for food, produce drugs from what you collect, and breed docile "hucows" that happily give more.
+HuMilk Co lets you run female colonists (and prisoners or slaves) as a milk herd. Milk lactating pawns for food, gather different types of milk based on xenotype, and breed docile "hucows" that happily give more.
 
 ## Requirements
 
@@ -10,9 +10,9 @@ HuMilk Co lets you run female colonists (and prisoners or slaves) as a milk herd
 - **Biotech** (required) — the milk system is built on its lactation mechanics.
 - **RimJobWorld** (required) — breast size, sex needs, and related systems.
 - **Ideology** (optional) — enables the "Human Milk Consumption" precept.
-- **RJW Quirks Fork** and **RJW Onahole Ext** (optional) — extra willingness and restraint integrations.
+- **RJW Quirks** and **RJW Onahole Ext** (optional) — extra willingness and restraint integrations.
 
-HuMilk Co also detects several common xenotype mods and gives their milk its own flavor automatically (see below).
+HuMilk Co also detects several common xenotype mods and gives them their own special milk automatically (see below).
 
 ## What the mod does
 
@@ -26,8 +26,8 @@ HuMilk Co also detects several common xenotype mods and gives their milk its own
 ### Milk as a resource
 
 - All milk is a real, stackable item you can eat, cook with, sell, or store. It rots like other food.
-- **Meals cooked with human milk carry its effect**, so a good cook can turn your herd's output into buffs for the whole colony.
-- Each xenotype produces a **visibly different, uniquely colored milk** worth different amounts.
+- **Meals cooked with milk carry its effect**, so a good cook can turn your herd's output into buffs for the whole colony.
+- Each xenotype produces a **unique milk with its own effects** worth different amounts.
 
 ### Xenotype milk effects
 
@@ -46,13 +46,15 @@ Drinking milk from a xenotype grants a temporary effect tied to that xenotype:
 | **Waster (Toxic)** | Comforting to wasters; toxic and mood-draining to everyone else. |
 | **Yttakin** | Better animal handling and cold tolerance. |
 | **Sanguophage (Blood)** | Restores hemogen for sanguophages; unsettling to normal humans. |
+
+**Custom Xenotypes**
+| Milk | Effect |
+| --- | --- |
 | **Molong** | Calms the drinker and can snap them out of a mental break. |
 | **Geist** | Faster reflexes and melee, but much weaker to EMP. |
 | **Half-Foot** | Faster crafting and movement, worse in social and combat. |
 | **Bogleg** | Faster healing and immunity, better haggling, foul taste and mood hit. |
 | **Stoneborn** | Faster construction and mining, mood boost, slow and heavy. |
-
-Effects last a few hours and come in the colors of the milk itself.
 
 ### Aphrolactone
 
@@ -66,23 +68,23 @@ Effects last a few hours and come in the colors of the milk itself.
 Give a pawn the **Hucow** trait and they become livestock:
 
 - **+50% milk production**, and they are **willing to be milked with no restraints**.
-- They can't do most work — only hauling, cleaning, and childcare — but can still be treated medically.
+- They can't do most work — only hauling, cleaning, and childcare.
 - Their recreation need is effectively removed: they are content as long as they are looked after.
-- They must be **milked at least once a day** or they suffer **sore udders**.
+- They must be **milked at least once a day** or they suffer **Sore Udders**.
 
 ### Willing and unwilling milking
 
-- A pawn is **willing** if they are a hucow, are on aphrolactone, or have the **Milking** quirk.
+- A pawn is **willing** if they are a Hucow, are on Aphrolactone, or have the **Milking** quirk.
 - **Unwilling** pawns can only be milked if they are **bound** — restrained with RJW or onahole bondage gear, downed, anesthetized, or otherwise rendered helpless.
 - Force-milking an unwilling pawn costs you: they resent the milker and take a mood hit.
 
 ### Mood and thoughts
 
-Milking comes with its own feelings — **freshly milked** hucows get a big mood boost, while **sore, unmilked udders**, **leaking milk**, and being **forced** all drag mood down. Pawns on aphrolactone get a **pleasure** mood boost from being milked.
+Milking comes with its own feelings — **Freshly Milked** Hucows get a big mood boost, while **sore, unmilked udders**, **leaking milk**, and being **forced** all drag mood down. Pawns on Aphrolactone get a **pleasure** mood boost from being milked.
 
 ### Ideology precept
 
-With Ideology active, colonies gain a **Human Milk Consumption** precept with five options — **abhorred, disliked, don't care, desired, and essential**. Colonists react to drinking milk accordingly, and an "essential" colony suffers if it goes a week without any.
+With Ideology active, colonies gain a **Human Milk Consumption** precept with five options — **Abhorred, Disliked, Don't Care, Desired, and Essential**. Colonists react to drinking milk accordingly, and an "Essential" colony suffers if it goes a week without any.
 
 ### Settings
 
@@ -95,4 +97,4 @@ In the mod options you can tune:
 
 ## Credits
 
-Created by **toaster bath**. Built for RimJobWorld and Biotech, with optional integrations for RJW Quirks Fork, Onahole Ext, and popular xenotype mods.
+Created by **toaster bath**. Built for RimJobWorld and Biotech, with optional integrations for RJW Quirks, Onahole Ext, and popular xenotype mods.
