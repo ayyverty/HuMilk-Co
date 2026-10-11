@@ -82,6 +82,14 @@ namespace HuMilkCo
         private static LazyDef<ThoughtDef> pleasureFromMilking;
         public static ThoughtDef PleasureFromMilking => pleasureFromMilking.Get("PleasureFromMilking");
 
+        /// <summary>
+        /// The single thought backing every milk effect's mood. Its value is computed
+        /// live from the pawn's active mood comps rather than set on the def, so all
+        /// milk effects share one def.
+        /// </summary>
+        private static LazyDef<ThoughtDef> milkEffectMood;
+        public static ThoughtDef MilkEffectMood => milkEffectMood.Get("MilkEffectMood");
+
         private static LazyDef<JobDef> milkHumanJob;
         public static JobDef MilkHumanJob => milkHumanJob.Get("MilkHuman");
 

@@ -4,109 +4,109 @@
   <!-- Links each xenotype to the milk its pawns produce and the effect that milk
        grants. Add entries here to map custom xenotypes from other mods. -->
 
-  <MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
+  <HuMilkCo.MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
     <defName>MilkXenotypeGenie</defName>
     <xenotype>Genie</xenotype>
     <milk>MilkHumanGenie</milk>
     <effect>MilkEffectGenie</effect>
-  </MilkXenotypeDef>
+  </HuMilkCo.MilkXenotypeDef>
 
-  <MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
+  <HuMilkCo.MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
     <defName>MilkXenotypeHighmate</defName>
     <xenotype>Highmate</xenotype>
     <milk>MilkHumanHighmate</milk>
     <effect>MilkEffectHighmate</effect>
-  </MilkXenotypeDef>
+  </HuMilkCo.MilkXenotypeDef>
 
-  <MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
+  <HuMilkCo.MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
     <defName>MilkXenotypeHussar</defName>
     <xenotype>Hussar</xenotype>
     <milk>MilkHumanHussar</milk>
     <effect>MilkEffectHussar</effect>
-  </MilkXenotypeDef>
+  </HuMilkCo.MilkXenotypeDef>
 
-  <MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
+  <HuMilkCo.MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
     <defName>MilkXenotypeNeanderthal</defName>
     <xenotype>Neanderthal</xenotype>
     <milk>MilkHumanNeanderthal</milk>
     <effect>MilkEffectNeanderthal</effect>
-  </MilkXenotypeDef>
+  </HuMilkCo.MilkXenotypeDef>
 
-  <MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
+  <HuMilkCo.MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
     <defName>MilkXenotypePigskin</defName>
     <xenotype>Pigskin</xenotype>
     <milk>MilkHumanPigskin</milk>
     <effect>MilkEffectPigskin</effect>
-  </MilkXenotypeDef>
+  </HuMilkCo.MilkXenotypeDef>
 
-  <MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
+  <HuMilkCo.MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
     <defName>MilkXenotypeDirtmole</defName>
     <xenotype>Dirtmole</xenotype>
     <milk>MilkHumanDirtmole</milk>
     <effect>MilkEffectDirtmole</effect>
-  </MilkXenotypeDef>
+  </HuMilkCo.MilkXenotypeDef>
 
-  <MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
+  <HuMilkCo.MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
     <defName>MilkXenotypeImpid</defName>
     <xenotype>Impid</xenotype>
     <milk>MilkHumanImpid</milk>
     <effect>MilkEffectImpid</effect>
-  </MilkXenotypeDef>
+  </HuMilkCo.MilkXenotypeDef>
 
-  <MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
+  <HuMilkCo.MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
     <defName>MilkXenotypeWaster</defName>
     <xenotype>Waster</xenotype>
     <milk>MilkHumanWaster</milk>
     <effect>MilkEffectWaster</effect>
-  </MilkXenotypeDef>
+  </HuMilkCo.MilkXenotypeDef>
 
-  <MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
+  <HuMilkCo.MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
     <defName>MilkXenotypeYttakin</defName>
     <xenotype>Yttakin</xenotype>
     <milk>MilkHumanYttakin</milk>
     <effect>MilkEffectYttakin</effect>
-  </MilkXenotypeDef>
+  </HuMilkCo.MilkXenotypeDef>
 
-  <MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
+  <HuMilkCo.MilkXenotypeDef MayRequire="ludeon.rimworld.biotech">
     <defName>MilkXenotypeSanguophage</defName>
     <xenotype>Sanguophage</xenotype>
     <milk>MilkHumanSanguophage</milk>
     <effect>MilkEffectSanguophage</effect>
-  </MilkXenotypeDef>
+  </HuMilkCo.MilkXenotypeDef>
 
-  <MilkXenotypeDef MayRequire="Sov.Tengri">
+  <HuMilkCo.MilkXenotypeDef MayRequire="Sov.Tengri">
     <defName>MilkXenotypeMolong</defName>
     <xenotype>GS_Molong</xenotype>
     <milk>MilkHumanMolong</milk>
     <effect>MilkEffectMolong</effect>
-  </MilkXenotypeDef>
+  </HuMilkCo.MilkXenotypeDef>
 
-  <MilkXenotypeDef MayRequire="Sov.Tenmo">
+  <HuMilkCo.MilkXenotypeDef MayRequire="Sov.Tenmo">
     <defName>MilkXenotypeGeist</defName>
     <xenotype>GS_Geist</xenotype>
     <milk>MilkHumanGeist</milk>
     <effect>MilkEffectGeist</effect>
-  </MilkXenotypeDef>
+  </HuMilkCo.MilkXenotypeDef>
 
-  <MilkXenotypeDef MayRequire="det.halffoot">
+  <HuMilkCo.MilkXenotypeDef MayRequire="det.halffoot">
     <defName>MilkXenotypeHalffoot</defName>
     <xenotype>DV_Halffoot</xenotype>
     <milk>MilkHumanHalffoot</milk>
     <effect>MilkEffectHalffoot</effect>
-  </MilkXenotypeDef>
+  </HuMilkCo.MilkXenotypeDef>
 
-  <MilkXenotypeDef MayRequire="det.boglegs">
+  <HuMilkCo.MilkXenotypeDef MayRequire="det.boglegs">
     <defName>MilkXenotypeBogleg</defName>
     <xenotype>DV_Bogleg</xenotype>
     <milk>MilkHumanBogleg</milk>
     <effect>MilkEffectBogleg</effect>
-  </MilkXenotypeDef>
+  </HuMilkCo.MilkXenotypeDef>
 
-  <MilkXenotypeDef MayRequire="det.stoneborn">
+  <HuMilkCo.MilkXenotypeDef MayRequire="det.stoneborn">
     <defName>MilkXenotypeStoneborn</defName>
     <xenotype>Stoneborn</xenotype>
     <milk>MilkHumanStoneborn</milk>
     <effect>MilkEffectStoneborn</effect>
-  </MilkXenotypeDef>
+  </HuMilkCo.MilkXenotypeDef>
 
 </Defs>

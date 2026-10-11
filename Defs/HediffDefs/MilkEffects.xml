@@ -47,10 +47,12 @@
         <severityPerDay>-3</severityPerDay>
         <showHoursToRecover>true</showHoursToRecover>
       </li>
+      <li Class="HuMilkCo.HediffCompProperties_MoodOffset">
+        <offset>8</offset>
+      </li>
     </comps>
     <stages>
       <li>
-        <moodOffset>8</moodOffset>
         <statOffsets>
           <SocialImpact>0.30</SocialImpact>
         </statOffsets>
@@ -130,10 +132,12 @@
         <severityPerDay>-4</severityPerDay>
         <showHoursToRecover>true</showHoursToRecover>
       </li>
+      <li Class="HuMilkCo.HediffCompProperties_MoodOffset">
+        <offset>-2</offset>
+      </li>
     </comps>
     <stages>
       <li>
-        <moodOffset>-2</moodOffset>
         <hungerRateFactor>0.9</hungerRateFactor>
       </li>
     </stages>
@@ -193,10 +197,7 @@
           <ComfyTemperatureMax>-5</ComfyTemperatureMax>
         </statOffsets>
         <damageFactors>
-          <li>
-            <damageDef>Flame</damageDef>
-            <factor>0.85</factor>
-          </li>
+          <Flame>0.85</Flame>
         </damageFactors>
       </li>
     </stages>
@@ -222,16 +223,22 @@
         <xenotype>Waster</xenotype>
         <toxicBuildupOnNonXenotype>0.06</toxicBuildupOnNonXenotype>
       </li>
+      <li Class="HuMilkCo.HediffCompProperties_MoodOffset">
+        <stageOffsets>
+          <li>-4</li>
+          <li>4</li>
+        </stageOffsets>
+      </li>
     </comps>
     <stages>
       <li>
-        <moodOffset>-4</moodOffset>
+        <minSeverity>0</minSeverity>
         <statFactors>
           <MoveSpeed>1.10</MoveSpeed>
         </statFactors>
       </li>
       <li>
-        <moodOffset>4</moodOffset>
+        <minSeverity>0.01</minSeverity>
         <statOffsets>
           <ImmunityGainSpeed>0.15</ImmunityGainSpeed>
         </statOffsets>
@@ -289,13 +296,19 @@
         <xenotype>Sanguophage</xenotype>
         <hemogenRestoreOnXenotype>0.15</hemogenRestoreOnXenotype>
       </li>
+      <li Class="HuMilkCo.HediffCompProperties_MoodOffset">
+        <stageOffsets>
+          <li>-10</li>
+          <li>5</li>
+        </stageOffsets>
+      </li>
     </comps>
     <stages>
       <li>
-        <moodOffset>-10</moodOffset>
+        <minSeverity>0</minSeverity>
       </li>
       <li>
-        <moodOffset>5</moodOffset>
+        <minSeverity>0.01</minSeverity>
       </li>
     </stages>
   </HediffDef>
@@ -319,10 +332,12 @@
       <li Class="HuMilkCo.HediffCompProperties_MilkEffectXenotype">
         <endMentalBreakOnIngest>true</endMentalBreakOnIngest>
       </li>
+      <li Class="HuMilkCo.HediffCompProperties_MoodOffset">
+        <offset>10</offset>
+      </li>
     </comps>
     <stages>
       <li>
-        <moodOffset>10</moodOffset>
       </li>
     </stages>
   </HediffDef>
@@ -352,10 +367,7 @@
           <MeleeDamageFactor>1.10</MeleeDamageFactor>
         </statFactors>
         <damageFactors>
-          <li>
-            <damageDef>EMP</damageDef>
-            <factor>2.0</factor>
-          </li>
+          <EMP>2.0</EMP>
         </damageFactors>
       </li>
     </stages>
@@ -409,10 +421,12 @@
         <severityPerDay>-4</severityPerDay>
         <showHoursToRecover>true</showHoursToRecover>
       </li>
+      <li Class="HuMilkCo.HediffCompProperties_MoodOffset">
+        <offset>-10</offset>
+      </li>
     </comps>
     <stages>
       <li>
-        <moodOffset>-10</moodOffset>
         <statFactors>
           <MeleeDamageFactor>1.10</MeleeDamageFactor>
         </statFactors>
@@ -441,10 +455,12 @@
         <severityPerDay>-4</severityPerDay>
         <showHoursToRecover>true</showHoursToRecover>
       </li>
+      <li Class="HuMilkCo.HediffCompProperties_MoodOffset">
+        <offset>10</offset>
+      </li>
     </comps>
     <stages>
       <li>
-        <moodOffset>10</moodOffset>
         <statFactors>
           <MoveSpeed>0.90</MoveSpeed>
         </statFactors>
